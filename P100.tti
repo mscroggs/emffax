@@ -1,6 +1,7 @@
 DE,Main Menu
+DS,inserter
 PN,10001
 PS,8010
 SC,0001
-OL,0 XXXXXXXXEMFFAX mpp DAY dd MTH ^[C hh:nn.ss
+CT,10,T
 OL,1 HELLO THERE
