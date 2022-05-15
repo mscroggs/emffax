@@ -1,5 +1,5 @@
 from page_maker import Page, Line
-from url_helpers import load_json
+from tools.url_helpers import load_json
 
 data = load_json("https://www.emfcamp.org/schedule/2018.json")
 
