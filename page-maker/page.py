@@ -1,17 +1,70 @@
 from enum import Enum
 
 BCHARS = {
-    "      ": " ", "x     ": "!", " x    ": "\"", "xx    ": "#", "  x   ": "$", "x x   ": "%",
-    " xx   ": "&", "xxx   ": "'", "   x  ": "(", "x  x  ": ")", " x x  ": "*", "xx x  ": "+",
-    "  xx  ": ",", "x xx  ": "-", " xxx  ": ".", "xxxx  ": "/", "    x ": "0", "x   x ": "1",
-    " x  x ": "2", "xx  x ": "3", "  x x ": "4", "x x x ": "5", " xx x ": "6", "xxx x ": "7",
-    "   xx ": "8", "x  xx ": "9", " x xx ": ":", "xx xx ": ";", "  xxx ": "<", "x xxx ": "=",
-    " xxxx ": ">", "xxxxx ": "?", "     x": "`", "x    x": "a", " x   x": "b", "xx   x": "c",
-    "  x  x": "d", "x x  x": "e", " xx  x": "f", "xxx  x": "g", "   x x": "h", "x  x x": "i",
-    " x x x": "j", "xx x x": "k", "  xx x": "l", "x xx x": "m", " xxx x": "n", "xxxx x": "o",
-    "    xx": "p", "x   xx": "q", " x  xx": "r", "xx  xx": "s", "  x xx": "t", "x x xx": "u",
-    " xx xx": "v", "xxx xx": "w", "   xxx": "x", "x  xxx": "y", " x xxx": "z", "xx xxx": "{",
-    "  xxxx": "|", "x xxxx": "}", " xxxxx": "~", "xxxxxx": "\x7f",
+    "      ": " ",
+    "x     ": "!",
+    " x    ": "\"",
+    "xx    ": "#",
+    "  x   ": "$",
+    "x x   ": "%",
+    " xx   ": "&",
+    "xxx   ": "'",
+    "   x  ": "(",
+    "x  x  ": ")",
+    " x x  ": "*",
+    "xx x  ": "+",
+    "  xx  ": ",",
+    "x xx  ": "-",
+    " xxx  ": ".",
+    "xxxx  ": "/",
+    "    x ": "0",
+    "x   x ": "1",
+    " x  x ": "2",
+    "xx  x ": "3",
+    "  x x ": "4",
+    "x x x ": "5",
+    " xx x ": "6",
+    "xxx x ": "7",
+    "   xx ": "8",
+    "x  xx ": "9",
+    " x xx ": ":",
+    "xx xx ": ";",
+    "  xxx ": "<",
+    "x xxx ": "=",
+    " xxxx ": ">",
+    "xxxxx ": "?",
+    "     x": "`",
+    "x    x": "a",
+    " x   x": "b",
+    "xx   x": "c",
+    "  x  x": "d",
+    "x x  x": "e",
+    " xx  x": "f",
+    "xxx  x": "g",
+    "   x x": "h",
+    "x  x x": "i",
+    " x x x": "j",
+    "xx x x": "k",
+    "  xx x": "l",
+    "x xx x": "m",
+    " xxx x": "n",
+    "xxxx x": "o",
+    "    xx": "p",
+    "x   xx": "q",
+    " x  xx": "r",
+    "xx  xx": "s",
+    "  x xx": "t",
+    "x x xx": "u",
+    " xx xx": "v",
+    "xxx xx": "w",
+    "   xxx": "x",
+    "x  xxx": "y",
+    " x xxx": "z",
+    "xx xxx": "{",
+    "  xxxx": "|",
+    "x xxxx": "}",
+    " xxxxx": "~",
+    "xxxxxx": "\x7f",
 }
 
 
@@ -56,7 +109,7 @@ class Page:
         self.page_number = page_number
         self.subpage = 1
         self.ps = 8010
-        self.lines = {i:None for i in range(1,26)}
+        self.lines = {i: None for i in range(1, 26)}
 
     def to_tti(self):
         assert self.page_number is not None
@@ -96,11 +149,11 @@ class Line:
         self.chars += [i for i in text]
 
     def add_block(self, block, color, color_after=Color.WHITE):
-        block = block.replace(".", " ")
+        block = block.replace(".",    " ")
         blocks = block.strip().split("\n")
         text = ""
         for char in zip(*[b[j::2] for b in blocks for j in range(2)]):
-            text += get_block_char("".join(char))
+            text += BCHARS["".join(char)]
         self.set_color(color, True)
         self.add_text(text)
         if color_after is not None:
@@ -112,8 +165,3 @@ class Line:
         else:
             self.set_color(color)
             self.chars.append("\x1b]")
-
-
-def get_block_char(c):
-    return BCHARS[c]
-
