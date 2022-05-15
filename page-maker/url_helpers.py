@@ -19,5 +19,5 @@ def load(url, headers={}, cookies={}):
     out = requests.get(url, headers=headers, cookies=cookies).text
     try:
         return out.decode('utf-8')
-    except:
+    except:  # noqa: E722
         return out

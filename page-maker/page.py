@@ -141,6 +141,7 @@ class Page:
         line.start_bg(Color.BLACK)
         self.set_line(23, line)
 
+
 class Line:
     def __init__(self):
         self.chars = []
