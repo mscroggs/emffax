@@ -132,7 +132,7 @@ class Page:
 
     def add_tagline(self, tagline):
         assert len(tagline) <= 36
-        tagline = " " * ((36 - len(tagline)) // 2) + tagline
+        tagline = " " * ((35 - len(tagline)) // 2) + tagline
         tagline += " " * (36 - len(tagline))
         line = Line()
         line.start_bg(Color.BLUE)
