@@ -130,6 +130,16 @@ class Page:
         assert number in self.lines
         self.lines[number] = line
 
+    def add_tagline(self, tagline):
+        assert len(tagline) <= 36
+        tagline = " " * ((36 - len(tagline)) // 2) + tagline
+        tagline += " " * (36 - len(tagline))
+        line = Line()
+        line.start_bg(Color.BLUE)
+        line.start_fg(Color.YELLOW)
+        line.add_text(tagline)
+        line.start_bg(Color.BLACK)
+        self.set_line(23, line)
 
 class Line:
     def __init__(self):
@@ -139,7 +149,7 @@ class Line:
         assert len(self.chars) <= 40
         return "".join(self.chars)
 
-    def set_color(self, color, block=False):
+    def start_fg(self, color, block=False):
         if block:
             self.chars.append("\x1b" + BLOCKCOLCHARS[color])
         else:
@@ -154,14 +164,14 @@ class Line:
         text = ""
         for char in zip(*[b[j::2] for b in blocks for j in range(2)]):
             text += BCHARS["".join(char)]
-        self.set_color(color, True)
+        self.start_fg(color, True)
         self.add_text(text)
         if color_after is not None:
-            self.set_color(color_after)
+            self.start_fg(color_after)
 
     def start_bg(self, color):
         if color == Color.BLACK:
             self.chars.append("\x1b\\")
         else:
-            self.set_color(color)
+            self.start_fg(color)
             self.chars.append("\x1b]")

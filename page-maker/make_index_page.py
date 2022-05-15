@@ -60,17 +60,17 @@ line.start_bg(Color.BLACK)
 p.set_line(7, line)
 
 line = Line()
-line.set_color(Color.RED)
+line.start_fg(Color.RED)
 line.add_text("Red")
-line.set_color(Color.GREEN)
+line.start_fg(Color.GREEN)
 line.add_text("Green")
-line.set_color(Color.BLUE)
+line.start_fg(Color.BLUE)
 line.add_text("Blue")
-line.set_color(Color.CYAN)
+line.start_fg(Color.CYAN)
 line.add_text("Cyan")
-line.set_color(Color.MAGENTA)
+line.start_fg(Color.MAGENTA)
 line.add_text("Magenta")
-line.set_color(Color.YELLOW)
+line.start_fg(Color.YELLOW)
 line.add_text("Yellow")
 p.set_line(9, line)
 
@@ -115,6 +115,8 @@ x.xx.x
 .x.xx.
 """, Color.YELLOW)
 p.set_line(11, line)
+
+p.add_tagline("EMFFAX: The world at your fingertips")
 
 with open("../P100.tti", "w") as f:
     f.write(p.to_tti())
