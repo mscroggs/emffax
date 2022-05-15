@@ -1,0 +1,21 @@
+name: 🕶️ 
+
+on:
+  push:
+    branches:
+      - "**"
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  style-checks:
+    name: Run style checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: sudo apt-get install -y python3-setuptools
+      - run: pip3 install flake8
+      - run: |
+            python3 -m flake8 page-mager
+        name: Run flake8 checks

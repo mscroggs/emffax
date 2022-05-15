@@ -1,2 +1,4 @@
 logins
-.*.pyc
+
+*.pyc
+.*.swp
