@@ -1,3 +1,4 @@
+import config
 from enum import Enum
 
 BCHARS = {
@@ -110,6 +111,10 @@ class Page:
         self.subpage = 1
         self.ps = 8010
         self.lines = {i: None for i in range(1, 26)}
+
+    def write(self):
+        with open(f"{config.output_dir}/P{self.page_number}.tti", "w") as f:
+            f.write(self.to_tti())
 
     def to_tti(self):
         assert self.page_number is not None

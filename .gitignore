@@ -2,3 +2,7 @@ logins
 
 *.pyc
 .*.swp
+
+_pages/*
+
+localconfig.py
