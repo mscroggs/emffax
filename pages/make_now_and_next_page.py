@@ -40,11 +40,11 @@ for venue in venues:
         for i, item in enumerate(village_events[:2]):
             line = Line()
             line.start_fg(Color.CYAN)
-            line.add_text(item["start_date"].split()[1])
+            line.add_text(item["start_date"].split()[1][:5])
             line.add_text("-")
-            line.add_text(item["end_date"].split()[1])
+            line.add_text(item["end_date"].split()[1][:5])
             line.start_fg(Color.DEFAULT)
-            line.add_text(item["speaker"][:22])
+            line.add_text(item["speaker"][:28])
             p.set_line(line_n, line)
             line_n += 1
 
