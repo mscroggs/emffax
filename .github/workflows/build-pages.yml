@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  build pages:
+  build-pages:
     name: Build EMFFAX pages
     runs-on: ubuntu-latest
     steps:
