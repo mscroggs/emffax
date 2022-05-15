@@ -139,7 +139,7 @@ class Page:
         line.start_fg(Color.YELLOW)
         line.add_text(tagline)
         line.start_bg(Color.BLACK)
-        self.set_line(23, line)
+        self.set_line(22, line)
 
 
 class Line:
