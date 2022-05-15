@@ -4,6 +4,8 @@ p = Page(100)
 
 line = Line()
 line.start_bg(Color.BLUE)
+line.add_text(" " * 37)
+line.start_bg(Color.BLACK)
 p.set_line(2, line)
 p.set_line(8, line)
 
