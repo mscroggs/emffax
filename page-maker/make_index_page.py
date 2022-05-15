@@ -70,8 +70,49 @@ line.set_color(Color.MAGENTA)
 line.add_text("Magenta")
 line.set_color(Color.YELLOW)
 line.add_text("Yellow")
-
 p.set_line(9, line)
+
+line = Line()
+line.add_text("Red: ")
+line.add_block("""
+.x
+x.
+.x
+""", Color.RED)
+line.add_text("Green: ")
+line.add_block("""
+.x
+x.
+.x
+""", Color.GREEN)
+line.add_text("Blue: ")
+line.add_block("""
+.x
+x.
+.x
+""", Color.BLUE)
+p.set_line(10, line)
+
+line = Line()
+line.add_text("Cyan: ")
+line.add_block("""
+.x
+x.
+.x
+""", Color.CYAN)
+line.add_text("Magenta: ")
+line.add_block("""
+.x
+x.
+.x
+""", Color.MAGENTA)
+line.add_text("Yellow: ")
+line.add_block("""
+.x
+x.
+.x
+""", Color.YELLOW)
+p.set_line(11, line)
 
 with open("../P100.tti", "w") as f:
     f.write(p.to_tti())
