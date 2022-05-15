@@ -152,8 +152,14 @@ class Line:
         self.chars = []
 
     def __str__(self):
+        if len(self.chars) > 40:
+            print(f"line is too long ({len(self.chars)} characters, max 40):")
+            print(''.join(self.chars))
         assert len(self.chars) <= 40
         return "".join(self.chars)
+
+    def start_double_size(self):
+        self.chars.append("\x1bM")
 
     def start_fg(self, color, block=False):
         if block:
