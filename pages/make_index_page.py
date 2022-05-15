@@ -2,6 +2,7 @@ from page_maker import Page, Line, Color
 
 p = Page(100)
 
+# Draw EMFFAX logo
 line = Line()
 line.start_bg(Color.BLUE)
 line.add_text(" " * 37)
@@ -59,62 +60,18 @@ line.add_block("""
 line.start_bg(Color.BLACK)
 p.set_line(7, line)
 
+# List pages
 line = Line()
-line.start_fg(Color.RED)
-line.add_text("Red")
-line.start_fg(Color.GREEN)
-line.add_text("Green")
-line.start_fg(Color.BLUE)
-line.add_text("Blue")
-line.start_fg(Color.CYAN)
-line.add_text("Cyan")
-line.start_fg(Color.MAGENTA)
-line.add_text("Magenta")
 line.start_fg(Color.YELLOW)
-line.add_text("Yellow")
-p.set_line(9, line)
-
-line = Line()
-line.add_text("Red: ")
-line.add_block("""
-.xx...
-x.xx.x
-.x.xx.
-""", Color.RED)
-line.add_text("Green: ")
-line.add_block("""
-.xx...
-x.xx.x
-.x.xx.
-""", Color.GREEN)
-line.add_text("Blue: ")
-line.add_block("""
-.xx...
-x.xx.x
-.x.xx.
-""", Color.BLUE)
+line.add_text(("Now & Next" + " " * 15)[:15])
+line.start_fg(Color.WHITE)
+line.add_text("606")
+line.add_text(("Now & Next" + " " * 15)[:15])
+line.start_fg(Color.WHITE)
+line.add_text("606")
 p.set_line(10, line)
-
-line = Line()
-line.add_text("Cyan: ")
-line.add_block("""
-.xx...
-x.xx.x
-.x.xx.
-""", Color.CYAN)
-line.add_text("Magenta: ")
-line.add_block("""
-.xx...
-x.xx.x
-.x.xx.
-""", Color.MAGENTA)
-line.add_text("Yellow: ")
-line.add_block("""
-.xx...
-x.xx.x
-.x.xx.
-""", Color.YELLOW)
 p.set_line(11, line)
+p.set_line(12, line)
 
 p.add_tagline("EMFFAX: The world at your fingertips")
 
