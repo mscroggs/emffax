@@ -161,6 +161,15 @@ class Line:
     def start_double_size(self):
         self.chars.append("\x1bM")
 
+    def end_double_size(self):
+        self.chars.append("\x1bL")
+
+    def start_flashing(self):
+        self.chars.append("\x1bH")
+
+    def end_flashing(self):
+        self.chars.append("\x1bI")
+
     def start_fg(self, color, block=False):
         if block:
             self.chars.append("\x1b" + BLOCKCOLCHARS[color])
