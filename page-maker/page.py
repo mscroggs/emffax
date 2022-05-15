@@ -150,7 +150,7 @@ class Line:
 
     def add_block(self, block, color, color_after=Color.WHITE):
         block = block.replace(".",    " ")
-        blocks = block.strip().split("\n")
+        blocks = block.strip("\n").split("\n")
         text = ""
         for char in zip(*[b[j::2] for b in blocks for j in range(2)]):
             text += BCHARS["".join(char)]

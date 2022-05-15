@@ -75,42 +75,42 @@ p.set_line(9, line)
 line = Line()
 line.add_text("Red: ")
 line.add_block("""
-.x
-x.
-.x
+.xx...
+x.xx.x
+.x.xx.
 """, Color.RED)
 line.add_text("Green: ")
 line.add_block("""
-.x
-x.
-.x
+.xx...
+x.xx.x
+.x.xx.
 """, Color.GREEN)
 line.add_text("Blue: ")
 line.add_block("""
-.x
-x.
-.x
+.xx...
+x.xx.x
+.x.xx.
 """, Color.BLUE)
 p.set_line(10, line)
 
 line = Line()
 line.add_text("Cyan: ")
 line.add_block("""
-.x
-x.
-.x
+.xx...
+x.xx.x
+.x.xx.
 """, Color.CYAN)
 line.add_text("Magenta: ")
 line.add_block("""
-.x
-x.
-.x
+.xx...
+x.xx.x
+.x.xx.
 """, Color.MAGENTA)
 line.add_text("Yellow: ")
 line.add_block("""
-.x
-x.
-.x
+.xx...
+x.xx.x
+.x.xx.
 """, Color.YELLOW)
 p.set_line(11, line)
 
