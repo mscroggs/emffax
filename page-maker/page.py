@@ -85,21 +85,21 @@ COLCHARS = {
     Color.WHITE: "G",
     Color.RED: "A",
     Color.GREEN: "B",
-    Color.BLUE: "C",
-    Color.CYAN: "D",
+    Color.BLUE: "D",
+    Color.CYAN: "F",
     Color.MAGENTA: "E",
-    Color.YELLOW: "F",
+    Color.YELLOW: "C",
 }
 
 BLOCKCOLCHARS = {
     Color.DEFAULT: "W",
-    Color.WHITE: "G",
+    Color.WHITE: "W",
     Color.RED: "Q",
     Color.GREEN: "R",
-    Color.BLUE: "S",
-    Color.CYAN: "T",
+    Color.BLUE: "T",
+    Color.CYAN: "V",
     Color.MAGENTA: "U",
-    Color.YELLOW: "V",
+    Color.YELLOW: "S",
 }
 
 
