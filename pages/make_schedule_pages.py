@@ -59,6 +59,7 @@ p.write()
 
 for i, stage in enumerate(["Stage A", "Stage B", "Stage C"]):
     p = Page(601 + i)
+    line = Line()
     line.start_fg(Color.YELLOW)
     line.start_double_size()
     line.add_text(stage)
@@ -87,7 +88,7 @@ for i, stage in enumerate(["Stage A", "Stage B", "Stage C"]):
     p.write()
 
 p = Page(600)
-
+line = Line()
 line.start_fg(Color.YELLOW)
 line.start_double_size()
 line.add_text("EMF Schedule")
