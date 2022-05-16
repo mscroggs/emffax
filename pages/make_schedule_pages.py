@@ -57,12 +57,12 @@ for venue in venues:
 
 p.write()
 
-for i, stage in enumerate(["Stage A", "Stage B", "Stage C"]):
+for i, venue in enumerate(["Stage A", "Stage B", "Stage C"]):
     p = Page(601 + i)
     line = Line()
     line.start_fg(Color.YELLOW)
     line.start_double_size()
-    line.add_text(stage)
+    line.add_text(venue)
     p.set_line(2, line)
 
     line_n = 4
