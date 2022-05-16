@@ -56,3 +56,41 @@ for venue in venues:
         line_n += 1
 
 p.write()
+
+for i, stage in enumerate(["Stage A", "Stage B", "Stage C"]):
+    p = Page(601 + i)
+    line.start_fg(Color.YELLOW)
+    line.start_double_size()
+    line.add_text(stage)
+    p.set_line(2, line)
+
+    line_n = 4
+
+    village_events = sorted(events[venue], key=lambda item: item["start_date"])
+    for i, item in enumerate(village_events[:9]):
+        line = Line()
+        line.start_fg(Color.CYAN)
+        line.add_text(item["start_date"].split()[1][:5])
+        line.add_text("-")
+        line.add_text(item["end_date"].split()[1][:5])
+        line.start_fg(Color.DEFAULT)
+        line.add_text(item["speaker"][:27])
+        p.set_line(line_n, line)
+        line_n += 1
+
+        line = Line()
+        line.start_fg(Color.DEFAULT)
+        line.add_text(item["title"][:38])
+        p.set_line(line_n, line)
+        line_n += 1
+
+    p.write()
+
+p = Page(600)
+
+line.start_fg(Color.YELLOW)
+line.start_double_size()
+line.add_text("EMF Schedule")
+p.set_line(2, line)
+
+p.write()
