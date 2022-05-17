@@ -94,4 +94,12 @@ line.start_double_size()
 line.add_text("EMF Schedule")
 p.set_line(2, line)
 
+for i, venue in enumerate(["Stage A", "Stage B", "Stage C"]):
+    line = Line()
+    line.start_fg(Color.DEFAULT)
+    line.add_text(venue + "      ")
+    line.start_fg(Color.YELLOW)
+    line.add_text(f"{601+i}")
+    p.set_line(5 + i, line)
+
 p.write()
