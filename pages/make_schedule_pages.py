@@ -106,7 +106,7 @@ line = Line()
 line.start_fg(Color.DEFAULT)
 line.add_text("Now & Next   ")
 line.start_fg(Color.YELLOW)
-line.add_text(f"606")
+line.add_text("606")
 p.set_line(8, line)
 
 p.write()
