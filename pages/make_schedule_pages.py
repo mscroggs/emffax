@@ -102,4 +102,11 @@ for i, venue in enumerate(["Stage A", "Stage B", "Stage C"]):
     line.add_text(f"{601+i}")
     p.set_line(5 + i, line)
 
+line = Line()
+line.start_fg(Color.DEFAULT)
+line.add_text("Now & Next   ")
+line.start_fg(Color.YELLOW)
+line.add_text(f"606")
+p.set_line(8, line)
+
 p.write()
