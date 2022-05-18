@@ -39,7 +39,6 @@ for i, (feed, title, tagline) in enumerate([
     line.start_double_size()
     line.add_text(title)
     p.set_line(2, line)
-    p.write()
 
     data = load_rss(feed)
 
@@ -56,5 +55,7 @@ for i, (feed, title, tagline) in enumerate([
             line_n += 1
         if line_n > 20:
             break
+
+    p.write()
 
 index.write()
