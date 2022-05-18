@@ -122,7 +122,7 @@ for i, venue in enumerate(["Stage A", "Stage B", "Stage C"]):
 
         line = Line()
         line.start_fg(Color.DEFAULT)
-        line.add_text(item.data["title"][:34])
+        line.add_text((item.data["title"] + " " * 34)[:34])
         line.start_fg(Color.YELLOW)
         line.add_text(f"{item.page}")
         p.set_line(line_n, line)
