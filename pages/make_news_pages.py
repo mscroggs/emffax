@@ -43,16 +43,20 @@ for i, (feed, title, tagline) in enumerate([
     data = load_rss(feed)
 
     line_n = 5
+    gap = 2
+    title = data["entries"]
     for item in data["entries"]:
         line = Line()
         if line_n == 5:
             line.start_double_size()
-        line.add_text(item["title"][:37])
-        p.set_line(line_n, line)
-        if line_n == 5:
-            line_n += 2
-        else:
-            line_n += 1
+        title = item["title"][:37]
+        while line_n <= 20 and len(title) > 0:
+            line.add_text(title[:37])
+            title = title[37:]
+            p.set_line(line_n, line)
+            line_n += gap
+        line_n += gap + 1
+        gap = 1
         if line_n > 20:
             break
 
