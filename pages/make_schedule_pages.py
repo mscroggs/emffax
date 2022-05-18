@@ -16,7 +16,6 @@ class Content:
         line.start_double_size()
         line.add_text(self.data["title"][:38])
         p.set_line(2, line)
-        p.write()
 
         line = Line()
         line.start_fg(Color.YELLOW)

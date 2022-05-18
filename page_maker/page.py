@@ -1,4 +1,5 @@
 import config
+import os
 from enum import Enum
 
 BCHARS = {
@@ -114,6 +115,8 @@ class Page:
         self.tagline = "EMFFAX: The world at your fingertips"
 
     def write(self):
+        if os.path.isfile(f"{config.output_dir}/P{self.page_number}.tti"):
+            raise RuntimeError(f"Duplicate page: {self.page_number}")
         with open(f"{config.output_dir}/P{self.page_number}.tti", "w") as f:
             f.write(self.to_tti())
 
