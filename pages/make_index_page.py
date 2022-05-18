@@ -61,18 +61,22 @@ line.start_bg(Color.BLACK)
 p.set_line(7, line)
 
 # List pages
-line = Line()
-line.start_fg(Color.YELLOW)
-line.add_text(("NOW & NEXT" + " " * 14)[:14])
-line.start_fg(Color.WHITE)
-line.add_text("606")
-line.add_text(" ")
-line.start_fg(Color.YELLOW)
-line.add_text(("NOW & NEXT" + " " * 14)[:14])
-line.start_fg(Color.WHITE)
-line.add_text("606")
-p.set_line(10, line)
-p.set_line(11, line)
-p.set_line(12, line)
+index = [
+    ("NEWS", 101),
+    ("NOW & NEXT", 606),
+]
+
+for n, (i, j) in enumerate(zip(index[::2], index[1::2])):
+    line = Line()
+    line.start_fg(Color.YELLOW)
+    line.add_text((i[0] + " " * 14)[:14])
+    line.start_fg(Color.WHITE)
+    line.add_text(f"{i[1]}")
+    line.add_text(" ")
+    line.start_fg(Color.YELLOW)
+    line.add_text((j[0] + " " * 14)[:14])
+    line.start_fg(Color.WHITE)
+    line.add_text(f"{j[1]}")
+    p.set_line(10 + n, line)
 
 p.write()

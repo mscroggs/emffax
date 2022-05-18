@@ -1,5 +1,10 @@
 import json
 import requests
+import feedparser
+
+
+def load_rss(url):
+    return feedparser.parse(url)
 
 
 def load_json(url, headers={}, cookies={}):
