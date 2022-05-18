@@ -75,6 +75,4 @@ p.set_line(10, line)
 p.set_line(11, line)
 p.set_line(12, line)
 
-p.add_tagline("EMFFAX: The world at your fingertips")
-
 p.write()

@@ -111,12 +111,22 @@ class Page:
         self.subpage = 1
         self.ps = 8010
         self.lines = {i: None for i in range(1, 26)}
+        self.tagline = "EMFFAX: The world at your fingertips"
 
     def write(self):
         with open(f"{config.output_dir}/P{self.page_number}.tti", "w") as f:
             f.write(self.to_tti())
 
     def to_tti(self):
+        tagline = " " * ((35 - len(self.tagline)) // 2) + self.tagline
+        tagline += " " * (36 - len(tagline))
+        line = Line()
+        line.start_bg(Color.BLUE)
+        line.start_fg(Color.YELLOW)
+        line.add_text(tagline)
+        line.start_bg(Color.BLACK)
+        self.lines[22] = line
+
         assert self.page_number is not None
         padded_page = f"000{self.page_number}"[-3:]
         padded_subpage = f"000{self.subpage}"[-2:]
@@ -133,18 +143,13 @@ class Page:
 
     def set_line(self, number, line):
         assert number in self.lines
+        # Save space for tagline
+        assert number not in [21, 22, 23]
         self.lines[number] = line
 
-    def add_tagline(self, tagline):
+    def set_tagline(self, tagline):
         assert len(tagline) <= 36
-        tagline = " " * ((35 - len(tagline)) // 2) + tagline
-        tagline += " " * (36 - len(tagline))
-        line = Line()
-        line.start_bg(Color.BLUE)
-        line.start_fg(Color.YELLOW)
-        line.add_text(tagline)
-        line.start_bg(Color.BLACK)
-        self.set_line(22, line)
+        self.tagline = tagline
 
 
 class Line:
