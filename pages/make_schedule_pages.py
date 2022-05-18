@@ -32,14 +32,15 @@ class Content:
         p.set_line(5, line)
 
         desc = self.data["description"]
-        for i in range(15):
-            if desc == "":
-                break
-            line = Line()
-            line.start_fg(Color.DEFAULT)
-            line.add_text(desc[:38])
-            desc = desc[38:]
-            p.set_line(6 + i, line)
+        if desc is not None:
+            for i in range(15):
+                if desc == "":
+                    break
+                line = Line()
+                line.start_fg(Color.DEFAULT)
+                line.add_text(desc[:38])
+                desc = desc[38:]
+                p.set_line(6 + i, line)
 
         p.write()
 
@@ -53,16 +54,16 @@ now = datetime(2018, 9, 2, 11, 32, 10, 3)
 
 page_n = 630
 
-events = {}
+upcoming = {}
 for item in data:
     the_date = datetime.strptime(item["end_date"], "%Y-%m-%d %H:%M:%S")
+    c = Content(item, page_n)
+    c.make_page()
+    page_n += 1
     if the_date > now:
-        if item["venue"] not in events:
-            events[item["venue"]] = []
-        c = Content(item, page_n)
-        c.make_page()
-        page_n += 1
-        events[item["venue"]].append(c)
+        if item["venue"] not in upcoming:
+            upcoming[item["venue"]] = []
+        upcoming[item["venue"]].append(c)
 
 # Now and next page
 p = Page(606)
@@ -74,14 +75,14 @@ p.set_line(2, line)
 
 line_n = 5
 for venue in ["Stage A", "Stage B", "Stage C"]:
-    if venue in events:
+    if venue in upcoming:
         line = Line()
         line.start_fg(Color.YELLOW)
         line.add_text(venue)
         p.set_line(line_n, line)
         line_n += 1
 
-        village_events = sorted(events[venue], key=lambda item: item.start)
+        village_events = sorted(upcoming[venue], key=lambda item: item.start)
         for i, item in enumerate(village_events[:2]):
             line = Line()
             line.start_fg(Color.CYAN)
