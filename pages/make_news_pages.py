@@ -37,6 +37,7 @@ for i, (feed, title, tagline) in enumerate([
         p.set_tagline(tagline)
     line = Line()
     line.start_double_size()
+    line.start_fg(Color.YELLOW)
     line.add_text(title)
     p.set_line(2, line)
 
@@ -46,16 +47,18 @@ for i, (feed, title, tagline) in enumerate([
     gap = 2
     title = data["entries"]
     for item in data["entries"]:
-        line = Line()
-        if line_n == 5:
-            line.start_double_size()
-        title = item["title"][:37]
+        title = item["title"]
         while line_n <= 20 and len(title) > 0:
+            line = Line()
+            if gap == 2:
+                line.start_double_size()
+            else:
+                line.start_fg(Color.DEFAULT)
             line.add_text(title[:37])
             title = title[37:]
             p.set_line(line_n, line)
             line_n += gap
-        line_n += gap + 1
+        line_n += 1
         gap = 1
         if line_n > 20:
             break
