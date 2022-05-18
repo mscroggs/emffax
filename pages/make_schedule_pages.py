@@ -117,6 +117,7 @@ for i, venue in enumerate(["Stage A", "Stage B", "Stage C"]):
         line.add_text(item.end.strftime("%H:%M"))
         line.start_fg(Color.DEFAULT)
         line.add_text(item.data["speaker"][:23])
+        p.set_line(line_n, line)
         line_n += 1
 
         line = Line()
