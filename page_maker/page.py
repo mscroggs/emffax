@@ -164,7 +164,7 @@ class Page:
         else:
             line.start_fg(color)
         while True:
-            if len(line) + len(words[0]) + 1 >= 40: 
+            if len(line) + len(words[0]) + 1 >= 40:
                 self.set_line(number, line)
                 line = Line()
                 if double:
@@ -177,7 +177,10 @@ class Page:
                     number += 1
                 if number > 20:
                     return number
-            line.add_text(" " + words[0])
+            if len(line) == 1:
+                line.add_text(words[0])
+            else:
+                line.add_text(" " + words[0])
             words = words[1:]
             if len(words) == 0:
                 self.set_line(number, line)
