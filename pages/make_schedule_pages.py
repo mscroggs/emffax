@@ -101,8 +101,8 @@ p.write()
 index = []
 index.append(("Now & Next", 606))
 pn = 0
-for venue in ["Stage A", "Stage B", "Stage C"]:
-    for day in ["Friday", "Saturday", "Sunday"]:
+for day in ["Friday", "Saturday", "Sunday"]:
+    for venue in ["Stage A", "Stage B", "Stage C"]:
         short_day = day[:3]
 
         index.append((f"{venue} {day}", 610 + pn))
@@ -133,7 +133,7 @@ for venue in ["Stage A", "Stage B", "Stage C"]:
 
 p = Page(600)
 line = Line()
-line.start_fg(Color.YELLOW)
+line.start_fg(Color.MAGENTA)
 line.start_double_size()
 line.add_text("EMF Schedule")
 p.set_line(2, line)
