@@ -154,6 +154,38 @@ class Page:
         assert len(tagline) <= 36
         self.tagline = tagline
 
+    def add_wrapped_text(self, number, text, double=False, color=Color.DEFAULT):
+        words = text.split(" ")
+        line = Line()
+        if double:
+            line.start_double_size()
+            if color != Color.DEFAULT:
+                line.start_fg(color)
+        else:
+            line.start_fg(color)
+        while True:
+            if len(line) + len(words[0]) + 1 >= 40:
+                self.set_line(number, line)
+                line = Line()
+                if double:
+                    line.start_double_size()
+                    if color != Color.DEFAULT:
+                        line.start_fg(color)
+                    number += 2
+                else:
+                    line.start_fg(color)
+                    number += 1
+                if number > 20:
+                    return number
+            line.add_text(" " + words[0])
+            words = words[1:]
+            if len(words) == 0:
+                self.set_line(number, line)
+                if double:
+                    return number + 1
+                else:
+                    return number + 2
+
 
 class Line:
     def __init__(self):
@@ -165,6 +197,9 @@ class Line:
             print(''.join(self.chars))
         assert len(self.chars) <= 40
         return "".join(self.chars)
+
+    def __len__(self):
+        return len(self.chars)
 
     def start_double_size(self):
         self.chars.append("\x1bM")

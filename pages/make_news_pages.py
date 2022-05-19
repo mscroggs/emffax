@@ -44,22 +44,17 @@ for i, (feed, title, tagline) in enumerate([
     data = load_rss(feed)
 
     line_n = 5
-    gap = 2
+    first = True
     title = data["entries"]
     for item in data["entries"]:
         title = item["title"]
-        while line_n <= 20 and len(title) > 0:
-            line = Line()
-            if gap == 2:
-                line.start_double_size()
-            else:
-                line.start_fg(Color.DEFAULT)
-            line.add_text(title[:37])
-            title = title[37:]
-            p.set_line(line_n, line)
-            line_n += gap
+        if first:
+            line_n = p.add_wrapped_text(line_n, title, double=True)
+            first = False
+        else:
+            line_n = p.add_wrapped_text(line_n, title)
+
         line_n += 1
-        gap = 1
         if line_n > 20:
             break
 
