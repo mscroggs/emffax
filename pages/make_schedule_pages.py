@@ -54,20 +54,23 @@ daily = {stage: {"Fri": [], "Sat": [], "Sun": []}
          for stage in stages}
 
 upcoming = {}
-page_n = 630
 for item in data:
-    if item["venue"] in stages:
-        c = Content(item, page_n)
-        c.make_page()
-        page_n += 1
-    else:
-        c = Content(item, None)
+    c = Content(item, None)
     if c.end > now:
         if c.venue not in upcoming:
             upcoming[c.venue] = []
         upcoming[c.venue].append(c)
     if c.venue in daily:
         daily[c.venue][c.start.strftime("%a")].append(c)
+
+page_n = 630
+for day in ["Fri", "Sat", "Sun"]:
+    for stage in stages:
+        daily[stage][day].sort(key=lambda item: item.start)
+        for c in daily[stage][day]:
+            c.page = page_n
+            c.make_page()
+            page_n += 1
 
 # Now and next page
 p = Page(606)
@@ -125,7 +128,6 @@ for day in ["Friday", "Saturday", "Sunday"]:
 
         line_n = 4
 
-        daily[venue][short_day].sort(key=lambda item: item.start)
         for item in daily[venue][short_day][:17]:
             line = Line()
             line.start_fg(Color.CYAN)
