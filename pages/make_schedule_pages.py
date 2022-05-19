@@ -9,6 +9,7 @@ class Content:
         self.page = page
         self.start = datetime.strptime(data["start_date"], "%Y-%m-%d %H:%M:%S")
         self.end = datetime.strptime(data["end_date"], "%Y-%m-%d %H:%M:%S")
+        self.venue = data["venue"]
 
     def make_page(self):
         p = Page(self.page)
@@ -48,16 +49,19 @@ now = datetime(2018, 9, 2, 11, 32, 10, 3)
 
 page_n = 630
 
+daily = {stage: {"Fri": [], "Sat": [], "Sun": []}
+         for stage in ["Stage A", "Stage B", "Stage C"]}
 upcoming = {}
 for item in data:
-    the_date = datetime.strptime(item["end_date"], "%Y-%m-%d %H:%M:%S")
     c = Content(item, page_n)
     c.make_page()
     page_n += 1
-    if the_date > now:
-        if item["venue"] not in upcoming:
-            upcoming[item["venue"]] = []
-        upcoming[item["venue"]].append(c)
+    if c.end > now:
+        if c.venue not in upcoming:
+            upcoming[c.venue] = []
+        upcoming[c.venue].append(c)
+    if c.venue in daily:
+        daily[c.venue][c.start.strftime("%a")].append(c)
 
 # Now and next page
 p = Page(606)
@@ -76,8 +80,8 @@ for venue in ["Stage A", "Stage B", "Stage C"]:
         p.set_line(line_n, line)
         line_n += 1
 
-        village_events = sorted(upcoming[venue], key=lambda item: item.start)
-        for i, item in enumerate(village_events[:2]):
+        upcoming[venue] = sorted(upcoming[venue], key=lambda item: item.start)
+        for i, item in enumerate(upcoming[venue][:2]):
             line = Line()
             line.start_fg(Color.CYAN)
             line.add_text(item.start.strftime("%a %H:%M"))
@@ -94,57 +98,54 @@ for venue in ["Stage A", "Stage B", "Stage C"]:
 p.write()
 
 # Pages for each stage
-for i, venue in enumerate(["Stage A", "Stage B", "Stage C"]):
-    p = Page(601 + i)
-    line = Line()
-    line.start_fg(Color.YELLOW)
-    line.start_double_size()
-    line.add_text(venue)
-    p.set_line(2, line)
-
-    line_n = 4
-
-    for i, item in enumerate(village_events[:8]):
-        line = Line()
-        line.start_fg(Color.CYAN)
-        line.add_text(item.start.strftime("%a %H:%M"))
-        line.add_text("-")
-        line.add_text(item.end.strftime("%H:%M"))
-        line.start_fg(Color.DEFAULT)
-        line.add_text(item.data["speaker"][:23])
-        p.set_line(line_n, line)
-        line_n += 1
-
-        line = Line()
-        line.start_fg(Color.DEFAULT)
-        line.add_text((item.data["title"] + " " * 34)[:34])
-        line.start_fg(Color.YELLOW)
-        line.add_text(f"{item.page}")
-        p.set_line(line_n, line)
-        line_n += 1
-
-    p.write()
-
-p = Page(600)
+index = Page(600)
 line = Line()
 line.start_fg(Color.YELLOW)
 line.start_double_size()
 line.add_text("EMF Schedule")
-p.set_line(2, line)
-
-for i, venue in enumerate(["Stage A", "Stage B", "Stage C"]):
-    line = Line()
-    line.start_fg(Color.DEFAULT)
-    line.add_text(venue + "      ")
-    line.start_fg(Color.YELLOW)
-    line.add_text(f"{601+i}")
-    p.set_line(5 + i, line)
+index.set_line(2, line)
 
 line = Line()
 line.start_fg(Color.DEFAULT)
 line.add_text("Now & Next   ")
 line.start_fg(Color.YELLOW)
 line.add_text("606")
-p.set_line(8, line)
+index.set_line(5, line)
 
-p.write()
+pn = 0
+for venue in ["Stage A", "Stage B", "Stage C"]:
+    for day in ["Friday", "Saturday", "Sunday"]:
+        short_day = day[:3]
+
+        line = Line()
+        line.start_fg(Color.YELLOW)
+        line.add_text(f"{venue} {day}       "[:15])
+        line.start_fg(Color.DEFAULT)
+        line.add_text(f"{601+i}")
+        index.set_line(6 + pn, line)
+
+        p = Page(610 + pn)
+        line = Line()
+        line.start_fg(Color.YELLOW)
+        line.start_double_size()
+        line.add_text(venue + " " + day)
+        p.set_line(2, line)
+
+        line_n = 4
+
+        daily[venue][short_day].sort(key=lambda item: item.start)
+        for item in daily[venue][short_day][:17]:
+            line = Line()
+            line.start_fg(Color.CYAN)
+            line.add_text(item.start.strftime("%a %H:%M"))
+            line.start_fg(Color.DEFAULT)
+            line.add_text((item.data["title"] + " " * 23)[:23])
+            line.start_fg(Color.YELLOW)
+            line.add_text(f"{item.page}")
+            p.set_line(line_n, line)
+            line_n += 1
+
+        p.write()
+        pn += 1
+
+index.write()
