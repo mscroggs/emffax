@@ -13,4 +13,4 @@ os.system(f"cp {this_dir}/static/* {config.output_dir}")
 for file in os.listdir(f"{this_dir}/pages"):
     if file.endswith(".py") and not file.startswith("_"):
         print(f"Running {file}")
-        assert os.system(f"PYTHONPATH=\"$PYTHONPATH:{this_dir}\" python3 pages/{file}")
+        os.system(f"PYTHONPATH=\"$PYTHONPATH:{this_dir}\" python3 pages/{file}")
