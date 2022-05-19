@@ -26,12 +26,14 @@ class Content:
         line.add_text(self.start.strftime("%a %H:%M"))
         line.add_text("-")
         line.add_text(self.end.strftime("%H:%M"))
-        line.add_text("  ")
-        line.add_text(self.data["venue"][:22])
         p.set_line(5, line)
+        line = Line()
+        line.start_fg(Color.YELLOW)
+        line.add_text(self.data["venue"][:22])
+        p.set_line(6, line)
 
         if self.data["description"] is not None:
-            p.add_wrapped_text(6, self.data["description"])
+            p.add_wrapped_text(8, self.data["description"])
         p.write()
 
 
