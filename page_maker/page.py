@@ -155,7 +155,12 @@ class Page:
         self.tagline = tagline
 
     def add_wrapped_text(self, number, text, double=False, color=Color.DEFAULT):
-        words = text.split(" ")
+        words = text.split()
+        words = [i if len(i) < 30 else i[:5] + "..." + i[-5:] for i in words]
+
+        if len(words) == 0:
+            return number
+
         line = Line()
         if double:
             line.start_double_size()

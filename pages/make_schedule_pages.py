@@ -30,17 +30,8 @@ class Content:
         line.add_text(self.data["venue"][:22])
         p.set_line(5, line)
 
-        desc = self.data["description"]
-        if desc is not None:
-            for i in range(15):
-                if desc == "":
-                    break
-                line = Line()
-                line.start_fg(Color.DEFAULT)
-                line.add_text(desc[:38])
-                desc = desc[38:]
-                p.set_line(6 + i, line)
-
+        if self.data["description"] is not None:
+            p.add_wrapped_text(6, self.data["description"])
         p.write()
 
 
