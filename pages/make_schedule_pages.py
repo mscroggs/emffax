@@ -98,31 +98,14 @@ for venue in ["Stage A", "Stage B", "Stage C"]:
 p.write()
 
 # Pages for each stage
-index = Page(600)
-line = Line()
-line.start_fg(Color.YELLOW)
-line.start_double_size()
-line.add_text("EMF Schedule")
-index.set_line(2, line)
-
-line = Line()
-line.start_fg(Color.DEFAULT)
-line.add_text("Now & Next   ")
-line.start_fg(Color.YELLOW)
-line.add_text("606")
-index.set_line(5, line)
-
+index = []
+index.append(("Now & Next", 606))
 pn = 0
 for venue in ["Stage A", "Stage B", "Stage C"]:
     for day in ["Friday", "Saturday", "Sunday"]:
         short_day = day[:3]
 
-        line = Line()
-        line.start_fg(Color.YELLOW)
-        line.add_text(f"{venue} {day}       "[:15])
-        line.start_fg(Color.DEFAULT)
-        line.add_text(f"{601+i}")
-        index.set_line(6 + pn, line)
+        index.append((f"{venue} {day}", 610 + pn))
 
         p = Page(610 + pn)
         line = Line()
@@ -148,4 +131,21 @@ for venue in ["Stage A", "Stage B", "Stage C"]:
         p.write()
         pn += 1
 
-index.write()
+p = Page(600)
+line = Line()
+line.start_fg(Color.YELLOW)
+line.start_double_size()
+line.add_text("EMF Schedule")
+p.set_line(2, line)
+
+index.sort(key=lambda i: i[1])
+
+for i, (page, n) in enumerate(index):
+    line = Line()
+    line.start_fg(Color.YELLOW)
+    line.add_text((page + " " * 20)[:20])
+    line.start_fg(Color.DEFAULT)
+    line.add_text(f"{n}")
+    p.set_line(5 + i, line)
+
+p.write()
