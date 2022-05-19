@@ -12,28 +12,30 @@ class Content:
 
     def make_page(self):
         p = Page(self.page)
-        line = Line()
-        line.start_double_size()
-        line.add_text(self.data["title"][:38])
-        p.set_line(2, line)
+        line_n = p.add_wrapped_text(2, self.data["title"], double=True)
 
         line = Line()
         line.start_fg(Color.YELLOW)
         line.add_text(self.data["speaker"][:38])
-        p.set_line(4, line)
+        p.set_line(line_n, line)
+        line_n += 1
+
         line = Line()
         line.start_fg(Color.YELLOW)
         line.add_text(self.start.strftime("%a %H:%M"))
         line.add_text("-")
         line.add_text(self.end.strftime("%H:%M"))
-        p.set_line(5, line)
+        p.set_line(line_n, line)
+        line_n += 1
+
         line = Line()
         line.start_fg(Color.YELLOW)
         line.add_text(self.data["venue"][:22])
-        p.set_line(6, line)
+        p.set_line(line_n, line)
+        line_n += 1
 
         if self.data["description"] is not None:
-            p.add_wrapped_text(8, self.data["description"])
+            p.add_wrapped_text(line_n + 1, self.data["description"])
         p.write()
 
 
