@@ -22,7 +22,6 @@ for i, (feed, title, tagline) in enumerate([
     ("http://blog.emfcamp.org/rss", "emfcamp.org", None),
     ("http://www.metoffice.gov.uk/public/data/PWSCache/WarningsRSS/Region/UK",
      "Weather warnings", "From the Met Office"),
-    ("http://www.dailymail.co.uk/tvshowbiz/index.rss", "Showbiz", "From The Daily Mail"),
 ]):
 
     line = Line()

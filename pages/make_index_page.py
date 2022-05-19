@@ -63,6 +63,7 @@ p.set_line(7, line)
 # List pages
 index = [
     ("NEWS", 101),
+    ("EMF SCHEDULE", 600),
     ("NOW & NEXT", 606),
 ]
 
