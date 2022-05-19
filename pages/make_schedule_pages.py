@@ -129,12 +129,12 @@ for day in ["Friday", "Saturday", "Sunday"]:
         for item in daily[venue][short_day][:17]:
             line = Line()
             line.start_fg(Color.CYAN)
-            line.add_text(item.start.strftime("%a %H:%M"))
+            line.add_text(item.start.strftime("%H:%M"))
             line.start_fg(Color.DEFAULT)
             if item.page is None:
-                line.add_text(item.data["title"][:27])
+                line.add_text(item.data["title"][:31])
             else:
-                line.add_text((item.data["title"] + " " * 23)[:23])
+                line.add_text((item.data["title"] + " " * 27)[:27])
                 line.start_fg(Color.YELLOW)
                 line.add_text(f"{item.page}")
             p.set_line(line_n, line)
