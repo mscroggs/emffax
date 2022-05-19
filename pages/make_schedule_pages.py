@@ -12,6 +12,7 @@ class Content:
         self.venue = data["venue"]
 
     def make_page(self):
+        assert self.page is not None
         p = Page(self.page)
         line_n = p.add_wrapped_text(2, self.data["title"], double=True)
 
@@ -42,20 +43,25 @@ class Content:
 
 # TODO: update to 2022
 data = load_json("https://www.emfcamp.org/schedule/2018.json")
-
+stages = ["Stage A", "Stage B", "Stage C"]
 now = datetime.now()
+
 # Date in past to test. TODO: remove this
 now = datetime(2018, 9, 2, 11, 32, 10, 3)
 
-page_n = 630
 
 daily = {stage: {"Fri": [], "Sat": [], "Sun": []}
-         for stage in ["Stage A", "Stage B", "Stage C"]}
+         for stage in stages}
+
 upcoming = {}
+page_n = 630
 for item in data:
-    c = Content(item, page_n)
-    c.make_page()
-    page_n += 1
+    if item["venue"] in stages:
+        c = Content(item, page_n)
+        c.make_page()
+        page_n += 1
+    else:
+        c = Content(item, None)
     if c.end > now:
         if c.venue not in upcoming:
             upcoming[c.venue] = []
@@ -72,7 +78,7 @@ line.add_text("Now and Next")
 p.set_line(2, line)
 
 line_n = 5
-for venue in ["Stage A", "Stage B", "Stage C"]:
+for venue in stages:
     if venue in upcoming:
         line = Line()
         line.start_fg(Color.YELLOW)
@@ -88,9 +94,12 @@ for venue in ["Stage A", "Stage B", "Stage C"]:
             line.add_text("-")
             line.add_text(item.end.strftime("%H:%M"))
             line.start_fg(Color.DEFAULT)
-            line.add_text((item.data["title"] + " " * 19)[:19])
-            line.start_fg(Color.YELLOW)
-            line.add_text(f"{item.page}")
+            if item.page is None:
+                line.add_text(item.data["title"][:23])
+            else:
+                line.add_text((item.data["title"] + " " * 19)[:19])
+                line.start_fg(Color.YELLOW)
+                line.add_text(f"{item.page}")
             p.set_line(line_n, line)
             line_n += 1
         line_n += 1
@@ -102,7 +111,7 @@ index = []
 index.append(("Now & Next", 606))
 pn = 0
 for day in ["Friday", "Saturday", "Sunday"]:
-    for venue in ["Stage A", "Stage B", "Stage C"]:
+    for venue in stages:
         short_day = day[:3]
 
         index.append((f"{venue} {day}", 610 + pn))
@@ -122,9 +131,12 @@ for day in ["Friday", "Saturday", "Sunday"]:
             line.start_fg(Color.CYAN)
             line.add_text(item.start.strftime("%a %H:%M"))
             line.start_fg(Color.DEFAULT)
-            line.add_text((item.data["title"] + " " * 23)[:23])
-            line.start_fg(Color.YELLOW)
-            line.add_text(f"{item.page}")
+            if item.page is None:
+                line.add_text(item.data["title"][:27])
+            else:
+                line.add_text((item.data["title"] + " " * 23)[:23])
+                line.start_fg(Color.YELLOW)
+                line.add_text(f"{item.page}")
             p.set_line(line_n, line)
             line_n += 1
 
