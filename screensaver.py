@@ -1,3 +1,4 @@
+import config
 import curses
 import locale
 import os
@@ -22,7 +23,7 @@ scr.refresh()
 pos = [0, 0]
 dir = [1, 1]
 
-text = "Press TTX/MIX to open EMFFAX"
+text = f"Press {config.teletext_button} to open EMFFAX"
 
 try:
     while True:
