@@ -1,11 +1,7 @@
 import config
 import curses
 import locale
-import os
 from time import sleep
-
-with open(os.path.join(os.path.expanduser('~'), ".EMFFAX_running"), "w") as f:
-    f.write("YES")
 
 locale.setlocale(locale.LC_ALL, "")
 
@@ -57,6 +53,3 @@ curses.curs_set(old)
 scr.keypad(0)
 curses.echo()
 curses.endwin()
-
-with open(os.path.join(os.path.expanduser('~'), ".EMFFAX_running"), "w") as f:
-    f.write("NO")
