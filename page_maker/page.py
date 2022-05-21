@@ -114,10 +114,19 @@ class Page:
         self.lines = {i: None for i in range(1, 26)}
         self.tagline = "EMFFAX: The world at your fingertips"
 
-    def write(self):
-        if os.path.isfile(f"{config.build_dir}/P{self.page_number}.tti"):
-            raise RuntimeError(f"Duplicate page: {self.page_number}")
+    def write(self, overwrite=False):
+        assert self.page_number != 888
+        if not overwrite:
+            if os.path.isfile(f"{config.build_dir}/P{self.page_number}.tti"):
+                raise RuntimeError(f"Duplicate page: {self.page_number}")
         with open(f"{config.build_dir}/P{self.page_number}.tti", "w") as f:
+            f.write(self.to_tti())
+
+    def write_direct(self, overwrite=False):
+        if not overwrite:
+            if os.path.isfile(f"{config.output_dir}/P{self.page_number}.tti"):
+                raise RuntimeError(f"Duplicate page: {self.page_number}")
+        with open(f"{config.output_dir}/P{self.page_number}.tti", "w") as f:
             f.write(self.to_tti())
 
     def to_tti(self):
