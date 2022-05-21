@@ -4,8 +4,8 @@ import os
 
 this_dir = os.path.dirname(os.path.realpath(__file__))
 
-os.system(f"rm -rf {config.output_dir}")
-os.system(f"mkdir {config.output_dir}")
+os.system(f"rm -rf {config.build_dir}")
+os.system(f"mkdir {config.build_dir}")
 
 files = []
 for file in os.listdir(f"{this_dir}/pages"):
