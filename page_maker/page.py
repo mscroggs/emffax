@@ -115,9 +115,9 @@ class Page:
         self.tagline = "EMFFAX: The world at your fingertips"
 
     def write(self):
-        if os.path.isfile(f"{config.output_dir}/P{self.page_number}.tti"):
+        if os.path.isfile(f"{config.build_dir}/P{self.page_number}.tti"):
             raise RuntimeError(f"Duplicate page: {self.page_number}")
-        with open(f"{config.output_dir}/P{self.page_number}.tti", "w") as f:
+        with open(f"{config.build_dir}/P{self.page_number}.tti", "w") as f:
             f.write(self.to_tti())
 
     def to_tti(self):

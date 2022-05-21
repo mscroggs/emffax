@@ -1,5 +1,8 @@
 import os as _os
 
+build_dir = _os.path.join(
+    _os.path.dirname(_os.path.realpath(__file__)),
+    "_temp")
 output_dir = _os.path.join(
     _os.path.dirname(_os.path.realpath(__file__)),
     "_pages")
