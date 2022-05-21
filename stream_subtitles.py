@@ -26,7 +26,7 @@ while True:
         lines[-1] += words
     else:
         lines.append(words)
-        lines = [-5:]
+        lines = lines[-5:]
 
     p = Page(888)
     p.set_tagline(None)
