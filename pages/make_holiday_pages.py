@@ -46,9 +46,9 @@ p.set_line(5, line)
 line = Line()
 line.start_bg(Color.BLUE)
 line.add_block("""
-.......................................................................
-xxxxxxx.xxxxxxx.xxxxxxx.xxxxxx.xxxxxxx.xxxxxxx.xxxxxxx.xxxxxxx.........
-x..x..x.x.....x.x..xxxx.x....x.x....xx.x.....x.x..x..x.x.....x.........
+........................................................................
+xxxxxxx.xxxxxxx.xxxxxxx.xxxxxx.xxxxxxx.xxxxxxx.xxxxxxx.xxxxxxx..........
+x..x..x.x.....x.x..xxxx.x....x.x....xx.x.....x.x..x..x.x.....x..........
 """, Color.WHITE, None)
 line.start_bg(Color.BLACK)
 p.set_line(6, line)
@@ -61,12 +61,10 @@ x.....x.x..x..x.x..xxxx.xx..xx.x..x..x.x.....x.x.....x.x.....x
 x..x..x.x..x..x.x..xxxx.xx..xx.x..x..x.x..x..x.xxxx..x.xxxx..x
 """, Color.WHITE, None)
 line.add_block("""
-xxxxxxx
-xxxxxxx
-xxxxxx.
+xxxxxxxx
+xxxxxxxx
+xxxxxxx.
 """, Color.YELLOW, None)
-
-
 line.start_bg(Color.BLACK)
 p.set_line(7, line)
 
@@ -79,9 +77,9 @@ xxxxxxx.xxxxxxx.xxxxxxx.xxxxxx.xxxxxxx.xxxxxxx.xxxxxxx.xxxxxxx
 """, Color.WHITE, None)
 p.set_line(8, line)
 line.add_block("""
-xxxxxx.
-xxxxx..
-xxxxx..
+xxxxxxx.
+xxxxxx..
+xxxxxx..
 """, Color.YELLOW, None)
-
+line.start_bg(Color.BLACK)
 p.write()
