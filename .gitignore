@@ -4,5 +4,6 @@ logins
 .*.swp
 
 _pages/*
+_temp/*
 
 localconfig.py
