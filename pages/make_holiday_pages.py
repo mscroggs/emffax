@@ -2,13 +2,6 @@ from page_maker import Page, Line, Color
 
 p = Page(400)
 
-# Draw EMFFAX logo
-line = Line()
-line.start_bg(Color.BLUE)
-line.add_text(" " * 37)
-line.start_bg(Color.BLACK)
-p.set_line(2, line)
-p.set_line(8, line)
 
 line = Line()
 line.start_bg(Color.BLUE)
@@ -18,7 +11,7 @@ line.add_block("""
 xxxxxxxxxxxxxxxxxxxx.......xxxxxxxx......xxxxxxxx.......................
 """, Color.YELLOW, None)
 line.start_bg(Color.BLACK)
-p.set_line(3, line)
+p.set_line(2, line)
 
 line = Line()
 line.start_bg(Color.BLUE)
@@ -28,7 +21,7 @@ xxxxxxxxxxxxxxx..xxx.xxxxxxx.x..xxx.xxxxxx.x..x.x.xxxxxxxxxxxxxxxxxxxxxx
 xxxxxxxxxxxxxxx...xx.x..x..x.x...xx.x....x.x....x.x..x..xxxxxxxxxxxxxxxx
 """, Color.YELLOW, None)
 line.start_bg(Color.BLACK)
-p.set_line(4, line)
+p.set_line(3, line)
 
 line = Line()
 line.start_bg(Color.BLUE)
@@ -38,7 +31,7 @@ xxxxxxxxxxxxxxx....x.x.x.x.x.x..xxx.x...xx.x..x.x.xx...xxxxxxxxxxxxxxxxx
 xxxxxxxxxxxxxxxxxxxx.x.xxx.x.xxxxxx.x..xxx.xxxxxx.x..x..xxxxxxxxxxxxxxxx
 """, Color.YELLOW, None)
 line.start_bg(Color.BLACK)
-p.set_line(5, line)
+p.set_line(4, line)
 
 line = Line()
 line.start_bg(Color.BLUE)
@@ -48,17 +41,17 @@ line.add_block("""
 ........................................................................
 """, Color.YELLOW, None)
 line.start_bg(Color.BLACK)
-p.set_line(6, line)
+p.set_line(5, line)
 
 line = Line()
 line.start_bg(Color.BLUE)
 line.add_block("""
-..............................................................
-xxxxxxx.xxxxxxx.xxxxxxx.xxxxxx.xxxxxxx.xxxxxxx.xxxxxxx.xxxxxxx
-x..x..x.x.....x.x..xxxx.x....x.x....xx.x.....x.x..x..x.x.....x
+.......................................................................
+xxxxxxx.xxxxxxx.xxxxxxx.xxxxxx.xxxxxxx.xxxxxxx.xxxxxxx.xxxxxxx.........
+x..x..x.x.....x.x..xxxx.x....x.x....xx.x.....x.x..x..x.x.....x.........
 """, Color.WHITE, None)
 line.start_bg(Color.BLACK)
-p.set_line(7, line)
+p.set_line(6, line)
 
 line = Line()
 line.start_bg(Color.BLUE)
@@ -67,8 +60,15 @@ x..x..x.x..x..x.x..xxxx.xx..xx.x..x..x.x..x..x.x..x..x.x..xxxx
 x.....x.x..x..x.x..xxxx.xx..xx.x..x..x.x.....x.x.....x.x.....x
 x..x..x.x..x..x.x..xxxx.xx..xx.x..x..x.x..x..x.xxxx..x.xxxx..x
 """, Color.WHITE, None)
+line.add_block("""
+xxxxxxx
+xxxxxxx
+xxxxxx.
+""", Color.YELLOW, None)
+
+
 line.start_bg(Color.BLACK)
-p.set_line(8, line)
+p.set_line(7, line)
 
 line = Line()
 line.start_bg(Color.BLUE)
@@ -77,6 +77,11 @@ x..x..x.x.....x.x.....x.x....x.x....xx.x..x..x.x.....x.x.....x
 xxxxxxx.xxxxxxx.xxxxxxx.xxxxxx.xxxxxxx.xxxxxxx.xxxxxxx.xxxxxxx
 ..............................................................
 """, Color.WHITE, None)
-p.set_line(9, line)
+p.set_line(8, line)
+line.add_block("""
+xxxxxx.
+xxxxx..
+xxxxx..
+""", Color.YELLOW, None)
 
 p.write()
