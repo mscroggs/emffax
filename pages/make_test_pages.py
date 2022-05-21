@@ -92,5 +92,6 @@ line = Line()
 for c in [Color.WHITE, Color.RED, Color.GREEN, Color.BLUE,
           Color.CYAN, Color.MAGENTA, Color.YELLOW]:
     line.add_block(".xxx.xxx\n.x.x.x.x\nxx.xxx.x", c, None)
+p.set_line(15, line)
 
 p.write()
