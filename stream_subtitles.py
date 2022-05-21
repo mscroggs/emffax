@@ -14,34 +14,28 @@ def fake_stream():
     n = random.randrange(1, 4)
     out = next[:n]
     next = next[n:]
-    return out
+    return " ".join(out)
 
 
+lines = []
 words1 = []
 words2 = []
 while True:
-    words2 += fake_stream()[::-1]
-    while sum([len(i) + 1 for i in words2]) >= 38:
-        words1.append(words2[0])
-        words2 = words2[1:]
-    while sum([len(i) + 1 for i in words1]) >= 38:
-        words1 = words1[1:]
-
-    print(" ".join(words1))
-    print(" ".join(words2))
+    words = fake_stream()
+    if len(lines[-1]) + 1 + len(words) < 38:
+        lines[-1] += words
+    else:
+        lines.append(words)
+        lines = [-5:]
 
     p = Page(888)
     p.set_tagline(None)
 
-    line = Line()
-    line.start_bg(Color.DEFAULT)
-    line.add_text(" ".join(words1[::-1]))
-    p.lines[21] = line
-
-    line = Line()
-    line.start_bg(Color.DEFAULT)
-    line.add_text(" ".join(words2[::-1]))
-    p.lines[22] = line
+    for i, j in enumerate(lines[::-1]):
+        line = Line()
+        line.start_fg(Color.DEFAULT)
+        line.add_text(j)
+        p.lines[22-i] = line
 
     p.write_direct(overwrite=True)
 
