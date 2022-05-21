@@ -34,11 +34,11 @@ p.set_line(6, line)
 line = Line()
 line.start_fg(Color.DEFAULT)
 line.add_text(machine)
-p.set_line(8, line)
+p.set_line(9, line)
 
 line = Line()
 line.start_fg(Color.DEFAULT)
 line.add_text(f"Set of balls number {set_of_balls}")
-p.set_line(9, line)
+p.set_line(10, line)
 
 p.write()
