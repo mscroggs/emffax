@@ -201,7 +201,7 @@ class Line:
             self.start_fg(color_after)
 
     def start_bg(self, color):
-        if color == Color.BLACK:
+        if color in [Color.BLACK, Color.DEFAULT]:
             self.chars.append("\x1b\\")
         else:
             self.start_fg(color)
