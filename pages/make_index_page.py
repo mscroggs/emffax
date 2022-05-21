@@ -65,6 +65,7 @@ index = [
     ("NEWS", 101),
     ("ABOUT EMFFAX", 114),
     ("HOLIDAYS", 400),
+    ("BLUE PETER", 525),
     ("NATIONAL LOTTERY", 555),
     ("EMF SCHEDULE", 600),
     ("NOW & NEXT", 606),
