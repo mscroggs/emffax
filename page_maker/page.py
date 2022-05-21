@@ -110,7 +110,7 @@ class Page:
         self.lines[number] = line
 
     def set_tagline(self, tagline):
-        assert len(tagline) <= 36
+        assert tagline is None or len(tagline) <= 36
         self.tagline = tagline
 
     def add_wrapped_text(self, number, text, double=False, color=Color.DEFAULT):
