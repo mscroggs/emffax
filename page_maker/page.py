@@ -65,17 +65,19 @@ class Page:
 
     def write(self, overwrite=False):
         assert self.page_number != 888
+        padded_page = f"000{self.page_number}"[-3:]
         if not overwrite:
-            if os.path.isfile(f"{config.build_dir}/P{self.page_number}.tti"):
-                raise RuntimeError(f"Duplicate page: {self.page_number}")
-        with open(f"{config.build_dir}/P{self.page_number}.tti", "w") as f:
+            if os.path.isfile(f"{config.build_dir}/P{padded_page}.tti"):
+                raise RuntimeError(f"Duplicate page: {padded_page}")
+        with open(f"{config.build_dir}/P{padded_page}.tti", "w") as f:
             f.write(self.to_tti())
 
     def write_direct(self, overwrite=False):
+        padded_page = f"000{self.page_number}"[-3:]
         if not overwrite:
-            if os.path.isfile(f"{config.output_dir}/P{self.page_number}.tti"):
-                raise RuntimeError(f"Duplicate page: {self.page_number}")
-        with open(f"{config.output_dir}/P{self.page_number}.tti", "w") as f:
+            if os.path.isfile(f"{config.output_dir}/P{padded_page}.tti"):
+                raise RuntimeError(f"Duplicate page: {padded_page}")
+        with open(f"{config.output_dir}/P{padded_page}.tti", "w") as f:
             f.write(self.to_tti())
 
     def to_tti(self):
