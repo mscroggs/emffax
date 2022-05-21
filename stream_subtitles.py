@@ -31,6 +31,7 @@ while True:
     print(" ".join(words2))
 
     p = Page(888)
+    p.set_tagline(None)
 
     line = Line()
     line.start_bg(Color.DEFAULT)

@@ -3,70 +3,19 @@ import os
 from enum import Enum
 
 BCHARS = {
-    "      ": " ",
-    "x     ": "!",
-    " x    ": "\"",
-    "xx    ": "#",
-    "  x   ": "$",
-    "x x   ": "%",
-    " xx   ": "&",
-    "xxx   ": "'",
-    "   x  ": "(",
-    "x  x  ": ")",
-    " x x  ": "*",
-    "xx x  ": "+",
-    "  xx  ": ",",
-    "x xx  ": "-",
-    " xxx  ": ".",
-    "xxxx  ": "/",
-    "    x ": "0",
-    "x   x ": "1",
-    " x  x ": "2",
-    "xx  x ": "3",
-    "  x x ": "4",
-    "x x x ": "5",
-    " xx x ": "6",
-    "xxx x ": "7",
-    "   xx ": "8",
-    "x  xx ": "9",
-    " x xx ": ":",
-    "xx xx ": ";",
-    "  xxx ": "<",
-    "x xxx ": "=",
-    " xxxx ": ">",
-    "xxxxx ": "?",
-    "     x": "`",
-    "x    x": "a",
-    " x   x": "b",
-    "xx   x": "c",
-    "  x  x": "d",
-    "x x  x": "e",
-    " xx  x": "f",
-    "xxx  x": "g",
-    "   x x": "h",
-    "x  x x": "i",
-    " x x x": "j",
-    "xx x x": "k",
-    "  xx x": "l",
-    "x xx x": "m",
-    " xxx x": "n",
-    "xxxx x": "o",
-    "    xx": "p",
-    "x   xx": "q",
-    " x  xx": "r",
-    "xx  xx": "s",
-    "  x xx": "t",
-    "x x xx": "u",
-    " xx xx": "v",
-    "xxx xx": "w",
-    "   xxx": "x",
-    "x  xxx": "y",
-    " x xxx": "z",
-    "xx xxx": "{",
-    "  xxxx": "|",
-    "x xxxx": "}",
-    " xxxxx": "~",
-    "xxxxxx": "\x7f",
+    "      ": " ", "x     ": "!", " x    ": "\"", "xx    ": "#", "  x   ": "$",
+    "x x   ": "%", " xx   ": "&", "xxx   ": "'", "   x  ": "(", "x  x  ": ")",
+    " x x  ": "*", "xx x  ": "+", "  xx  ": ",", "x xx  ": "-", " xxx  ": ".",
+    "xxxx  ": "/", "    x ": "0", "x   x ": "1", " x  x ": "2", "xx  x ": "3",
+    "  x x ": "4", "x x x ": "5", " xx x ": "6", "xxx x ": "7", "   xx ": "8",
+    "x  xx ": "9", " x xx ": ":", "xx xx ": ";",  "  xxx ": "<", "x xxx ": "=",
+    " xxxx ": ">", "xxxxx ": "?", "     x": "`", "x    x": "a", " x   x": "b",
+    "xx   x": "c", "  x  x": "d", "x x  x": "e", " xx  x": "f", "xxx  x": "g",
+    "   x x": "h", "x  x x": "i", " x x x": "j", "xx x x": "k", "  xx x": "l",
+    "x xx x": "m", " xxx x": "n", "xxxx x": "o", "    xx": "p", "x   xx": "q",
+    " x  xx": "r", "xx  xx": "s", "  x xx": "t", "x x xx": "u", " xx xx": "v",
+    "xxx xx": "w", "   xxx": "x", "x  xxx": "y", " x xxx": "z", "xx xxx": "{",
+    "  xxxx": "|", "x xxxx": "}", " xxxxx": "~", "xxxxxx": "\x7f",
 }
 
 
@@ -130,14 +79,15 @@ class Page:
             f.write(self.to_tti())
 
     def to_tti(self):
-        tagline = " " * ((35 - len(self.tagline)) // 2) + self.tagline
-        tagline += " " * (36 - len(tagline))
-        line = Line()
-        line.start_bg(Color.BLUE)
-        line.start_fg(Color.YELLOW)
-        line.add_text(tagline)
-        line.start_bg(Color.BLACK)
-        self.lines[22] = line
+        if self.tagline is not None:
+            tagline = " " * ((35 - len(self.tagline)) // 2) + self.tagline
+            tagline += " " * (36 - len(tagline))
+            line = Line()
+            line.start_bg(Color.BLUE)
+            line.start_fg(Color.YELLOW)
+            line.add_text(tagline)
+            line.start_bg(Color.BLACK)
+            self.lines[22] = line
 
         assert self.page_number is not None
         padded_page = f"000{self.page_number}"[-3:]
