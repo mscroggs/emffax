@@ -9,7 +9,7 @@ line.start_fg(Color.YELLOW)
 line.add_text("EMFFAX")
 p.set_line(2, line)
 
-n = p.add_wrapped_text(3,
+n = p.add_wrapped_text(4,
     "EMFFAX is a text-based information service inspired by "
     "CEEFAX (see page 115). EMFFAX was created by Matthew Scroggs.")
 n = p.add_wrapped_text(n + 1,
@@ -30,7 +30,7 @@ line.start_fg(Color.YELLOW)
 line.add_text("CEEFAX")
 p.set_line(2, line)
 
-n = p.add_wrapped_text(3,
+n = p.add_wrapped_text(4,
     "CEEFAX was a text-based information service provided by the BBC. "
     "The service ran from 1974-2012 and could be accessed by pressing "
     "the teletext button on any suitable TV.")
