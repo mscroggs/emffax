@@ -56,6 +56,7 @@ BLOCKCOLCHARS = {
 
 class Page:
     def __init__(self, page_number):
+        assert 100 <= page_number < 900
         self.description = None
         self.page_number = page_number
         self.subpage = 1
@@ -65,19 +66,17 @@ class Page:
 
     def write(self, overwrite=False):
         assert self.page_number != 888
-        padded_page = f"000{self.page_number}"[-3:]
         if not overwrite:
-            if os.path.isfile(f"{config.build_dir}/P{padded_page}.tti"):
-                raise RuntimeError(f"Duplicate page: {padded_page}")
-        with open(f"{config.build_dir}/P{padded_page}.tti", "w") as f:
+            if os.path.isfile(f"{config.build_dir}/P{self.page_number}.tti"):
+                raise RuntimeError(f"Duplicate page: {self.page_number}")
+        with open(f"{config.build_dir}/P{self.page_number}.tti", "w") as f:
             f.write(self.to_tti())
 
     def write_direct(self, overwrite=False):
-        padded_page = f"000{self.page_number}"[-3:]
         if not overwrite:
-            if os.path.isfile(f"{config.output_dir}/P{padded_page}.tti"):
-                raise RuntimeError(f"Duplicate page: {padded_page}")
-        with open(f"{config.output_dir}/P{padded_page}.tti", "w") as f:
+            if os.path.isfile(f"{config.output_dir}/P{self.page_number}.tti"):
+                raise RuntimeError(f"Duplicate page: {self.page_number}")
+        with open(f"{config.output_dir}/P{self.page_number}.tti", "w") as f:
             f.write(self.to_tti())
 
     def to_tti(self):
@@ -92,12 +91,11 @@ class Page:
             self.lines[22] = line
 
         assert self.page_number is not None
-        padded_page = f"000{self.page_number}"[-3:]
         padded_subpage = f"000{self.subpage}"[-2:]
         out = ""
         out += f"DE,{self.description}\n"
         out += f"PS,{self.ps}\n"
-        out += f"PN,{padded_page}{padded_subpage}\n"
+        out += f"PN,{self.page_number}{padded_subpage}\n"
         out += f"SC,00{padded_subpage}\n"
         for i, j in self.lines.items():
             if j is not None:

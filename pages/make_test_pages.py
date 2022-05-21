@@ -1,6 +1,6 @@
 from page_maker import Page, Line, Color
 
-p = Page(0)
+p = Page(899)
 
 line = Line()
 line.start_double_size()
