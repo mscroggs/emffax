@@ -18,12 +18,12 @@ def fake_stream():
 
 
 lines = []
-words1 = []
-words2 = []
 while True:
     words = fake_stream()
+    if len(lines) == 0:
+        lines.append(words)
     if len(lines[-1]) + 1 + len(words) < 38:
-        lines[-1] += words
+        lines[-1] += " " + words
     else:
         lines.append(words)
         lines = lines[-5:]
