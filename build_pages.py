@@ -15,4 +15,5 @@ for file in os.listdir(f"{this_dir}/pages"):
         print(f"Running {file}")
         os.system(f"PYTHONPATH=\"$PYTHONPATH:{this_dir}\" python3 pages/{file}")
 
-os.system(f"cp {config.build_dir}/* {config.output_dir}")
+if config.output_dir is not None:
+    os.system(f"cp {config.build_dir}/* {config.output_dir}")
