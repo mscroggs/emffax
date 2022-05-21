@@ -112,6 +112,10 @@ p.write()
 # Pages for each stage
 index = []
 index.append(("Now & Next", 606))
+index.append(("Thursday films", 619))
+index.append(("Friday films", 620))
+index.append(("Saturday films", 621))
+index.append(("Sunday films", 622))
 pn = 0
 for day in ["Friday", "Saturday", "Sunday"]:
     for venue in stages:
