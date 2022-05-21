@@ -1,33 +1,28 @@
-import lorem
-import random
-from time import sleep
+import asyncio
+import websockets
 from page_maker import Page, Line, Color
 
-next = []
+lines = ["[awaiting subtitles]"]
 
 
-def fake_stream():
-    global next
-    if len(next) == 0:
-        next = lorem.sentence().split()
+async def hello():
+    global lines
+    async with websockets.connect("wss://stagetext.emfcamp.app/socket/a", ssl=True) as w:
+        line = await w.recv()
+    words = line.split()
+    for w in words:
+        if len(lines) == 0:
+            lines.append(w)
+        if len(lines[-1]) + 1 + len(w) < 38:
+            lines[-1] += " " + w
+        else:
+            lines.append(w)
+            lines = lines[-10:]
 
-    n = random.randrange(1, 4)
-    out = next[:n]
-    next = next[n:]
-    return " ".join(out)
+    write_subtitles()
 
 
-lines = []
-while True:
-    words = fake_stream()
-    if len(lines) == 0:
-        lines.append(words)
-    if len(lines[-1]) + 1 + len(words) < 38:
-        lines[-1] += " " + words
-    else:
-        lines.append(words)
-        lines = lines[-5:]
-
+def write_subtitles():
     p = Page(888)
     p.set_tagline(None)
 
@@ -39,4 +34,8 @@ while True:
 
     p.write_direct(overwrite=True)
 
-    sleep(1)
+
+write_subtitles()
+while True:
+    asyncio.get_event_loop().run_until_complete(hello())
+    print("updated")
