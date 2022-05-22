@@ -20,7 +20,7 @@ class Station:
         if config.open_ldbws_key is None:
             line = Line()
             line.start_fg(Color.RED)
-            line.add_text("Need an OpenLDBWS key to load train data.")
+            line.add_text("Need OpenLDBWS key")
             p.set_line(4, line)
 
             p.write()
