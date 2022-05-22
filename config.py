@@ -6,6 +6,7 @@ build_dir = _os.path.join(
 output_dir = None
 
 aviationstack_key = None
+open_ldbws_key = None
 
 teletext_button = "TELETEXT BUTTON"
 
