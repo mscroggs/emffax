@@ -1,3 +1,4 @@
 requests
 feedparser
 websockets
+nrewebservices

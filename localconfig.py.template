@@ -1,2 +1,5 @@
 # This file can be renamed as "localconfig.py" and used to overwrite
 # settings in config.py
+
+# Sign up at http://realtime.nationalrail.co.uk/OpenLDBWSRegistration/
+open_ldbws_key = None
