@@ -19,6 +19,7 @@ jobs:
         with:
           python-version: "3.10"
       - run: pip3 install pytest
+      - run: pip install "setuptools==58.0.0"
       - run: pip3 install -r requirements.txt
       - run: python3 -m pytest test.py
         name: Test building EMFFAX pages
