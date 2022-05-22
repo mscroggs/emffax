@@ -1,5 +1,4 @@
 from page_maker import Page, Color, Line
-from nrewebservices.ldbws import Session
 import config
 
 
@@ -26,6 +25,8 @@ class Station:
 
             p.write()
             return
+
+        from nrewebservices.ldbws import Session
 
         session = Session(
             "https://lite.realtime.nationalrail.co.uk/OpenLDBWS/wsdl.aspx?ver=2016-02-16",
