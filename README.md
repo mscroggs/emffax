@@ -1,7 +1,7 @@
 # EMFFAX 2022
 
-EMFFAX is appearing in both bars at EMF 2022. This repo contains the code used to
-generate its pages.
+EMFFAX is appearing in both bars at [EMF 2022](https://emfcamp.org). This repo contains the
+code used to generate its pages.
 
 ## Setting up EMFFAX
 
