@@ -21,7 +21,7 @@ Edit the file `/boot/cpnfig.txt` and comment out the line `dtoverlay=vc4-kms-v3d
 
 #### vbit2
 
-Install vbit2. This can be done by running:
+Install [vbit2](https://github.com/peterkvt80/vbit2). This can be done by running:
 
 ```bash
 source <(wget -O - https://raw.githubusercontent.com/peterkvt80/vbit2/master/getvbit2)
