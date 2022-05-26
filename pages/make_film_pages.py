@@ -27,11 +27,11 @@ for i, (day, films) in enumerate(films.items()):
         elif c == "PG":
             line.start_fg(Color.YELLOW)
         elif c in ["12", "12A"]:
-            line.start_fg(Color.YELLOW)
+            line.start_fg(Color.MAGENTA)
         elif c == "15":
             line.start_fg(Color.RED)
         elif c == "18":
-            line.start_fg(Color.RED)
+            line.start_fg(Color.CYAN)
         elif c == "Unrated":
             line.start_fg(Color.DEFAULT)
         else:
