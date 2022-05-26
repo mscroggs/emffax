@@ -22,7 +22,7 @@ p.set_line(3, line)
 
 line_n = 4
 
-if config.twitter_access_key is not None:
+if config.twitter_access_key is None:
     tweets = []
 else:
     t = twitter.Twitter(auth=twitter.OAuth(
@@ -69,7 +69,7 @@ p.set_line(3, line)
 
 line_n = 4
 
-if config.twitter_access_key is not None:
+if config.twitter_access_key is None:
     tweets = []
 else:
     tweets = t.statuses.user_timeline(screen_name="emfcamp")
