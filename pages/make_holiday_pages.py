@@ -283,11 +283,7 @@ p.set_line(19, line)
 line = Line()
 line.start_bg(Color.YELLOW)
 line.start_fg(Color.CYAN)
-line.add_text(" " * 11)
-line.start_fg(Color.BLUE)
-line.add_text("Flights")
-line.start_fg(Color.RED)
-line.add_text("406 ")
+line.add_text(" " * 24)
 line.start_fg(Color.BLUE)
 line.add_text("Trains")
 line.start_fg(Color.RED)
@@ -325,6 +321,10 @@ things_to_see = {
         "RiddoDuottar Museum", "Juhls Silver Gallery", "Samiway",
         "Sokkiadventure", "Pikefossen", "Kautokeino Church", "Freeze"
     ],
+    "Lower Brailes": [
+        "Brailes church", "Mine Hill", "Brailes Hill", "Castle Hill",
+        "Baldwin's", "Paddock Farm", "Playing Fields", "Fairfax Interiors"
+    ]
 }
 
 for n, (location, things) in enumerate(things_to_see.items()):
