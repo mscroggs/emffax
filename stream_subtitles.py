@@ -23,16 +23,19 @@ async def hello():
 
 
 def write_subtitles():
-    p = Page(888)
-    p.set_tagline(None)
+    try:
+        p = Page(888)
+        p.set_tagline(None)
 
-    for i, j in enumerate(lines[::-1]):
-        line = Line()
-        line.start_fg(Color.DEFAULT)
-        line.add_text(j)
-        p.lines[22-i] = line
+        for i, j in enumerate(lines[::-1]):
+            line = Line()
+            line.start_fg(Color.DEFAULT)
+            line.add_text(j)
+            p.lines[22-i] = line
 
-    p.write_direct(overwrite=True)
+        p.write_direct(overwrite=True)
+    except:  # noqa: E722
+        pass
 
 
 write_subtitles()
