@@ -32,9 +32,11 @@ for i, (day, films) in enumerate(films.items()):
             line.start_fg(Color.RED)
         elif c == "18":
             line.start_fg(Color.RED)
+        elif c == "Unrated":
+            line.start_fg(Color.DEFAULT)
         else:
             raise ValueError(f"Unknown certificate: {c}")
-        line.add_text(c)
+        line.add_text(c[:3])
         p.set_line(n, line)
         n += 1
 
