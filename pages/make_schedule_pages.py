@@ -41,14 +41,9 @@ class Content:
         p.write()
 
 
-# TODO: update to 2022
-data = load_json("https://www.emfcamp.org/schedule/2018.json")
+data = load_json("https://www.emfcamp.org/schedule/2022.json")
 stages = ["Stage A", "Stage B", "Stage C"]
 now = datetime.now()
-
-# Date in past to test. TODO: remove this
-now = datetime(2018, 9, 2, 11, 32, 10, 3)
-
 
 daily = {stage: {"Fri": [], "Sat": [], "Sun": []}
          for stage in stages}
