@@ -20,7 +20,7 @@ Attach the other ends of these wires to a phono connector (GND is -, TV is +).
 
 Install Raspberry Pi OS Lite on a micro SD card, and boot up the Pi.
 
-Edit the file `/boot/cpnfig.txt` and comment out the line `dtoverlay=vc4-kms-v3d`.
+Edit the file `/boot/config.txt` and comment out the line `dtoverlay=vc4-kms-v3d`.
 
 #### vbit2
 
@@ -51,6 +51,12 @@ git clone https://github.com/mscroggs/emffax-2022.git
 Make a copy of `localconfig.py.template` called `localconfig.py`, and add the line
 `output_dir = "/home/USERNAME/.teletext_services/EMFFAX"`. You can also add any
 local settings you wish to use (eg API keys).
+
+The dependencies of EMFFAX can be installed by running:
+
+```
+sudo pip3 install -r requirements.txt
+```
 
 #### Cron jobs
 
