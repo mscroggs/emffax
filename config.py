@@ -5,7 +5,6 @@ build_dir = _os.path.join(
     "_pages")
 output_dir = None
 
-aviationstack_key = None
 open_ldbws_key = None
 twitter_access_key = None
 twitter_access_secret = None
