@@ -65,7 +65,7 @@ index = [
     ("NEWS", 101),
     ("ABOUT EMFFAX", 114),
     ("_EMFFAX", 120),
-    ("@EMFFAX", 121),
+    ("@EMFFAX", 130),
     ("HOLIDAYS", 400),
     ("BLUE PETER", 525),
     ("LOTTERY", 555),
