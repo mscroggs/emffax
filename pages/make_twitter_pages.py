@@ -84,6 +84,7 @@ for i in range(10):
 
     line = Line()
     line.add_block(b2, Color.CYAN, None)
+    line.start_fg(Color.CYAN)
     line.add_text(f"{i + 1}/10")
     p.set_line(3, line)
 
