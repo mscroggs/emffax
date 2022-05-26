@@ -64,9 +64,11 @@ p.set_line(7, line)
 index = [
     ("NEWS", 101),
     ("ABOUT EMFFAX", 114),
+    ("TWITTER: _EMFFAX", 120),
+    ("TWITTER: @EMFFAX", 121),
     ("HOLIDAYS", 400),
     ("BLUE PETER", 525),
-    ("NATIONAL LOTTERY", 555),
+    ("LOTTERY", 555),
     ("EMF SCHEDULE", 600),
     ("NOW & NEXT", 606),
 ]

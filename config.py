@@ -7,6 +7,10 @@ output_dir = None
 
 aviationstack_key = None
 open_ldbws_key = None
+twitter_access_key = None
+twitter_access_secret = None
+twitter_consumer_key = None
+twitter_consumer_secret = None
 
 teletext_button = "TELETEXT BUTTON"
 
