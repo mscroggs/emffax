@@ -22,14 +22,17 @@ p.set_line(3, line)
 
 line_n = 4
 
-t = twitter.Twitter(auth=twitter.OAuth(
-    config.twitter_access_key,
-    config.twitter_access_secret,
-    config.twitter_consumer_key,
-    config.twitter_consumer_secret))
+if config.twitter_access_key is not None:
+    tweets = []
+else:
+    t = twitter.Twitter(auth=twitter.OAuth(
+        config.twitter_access_key,
+        config.twitter_access_secret,
+        config.twitter_consumer_key,
+        config.twitter_consumer_secret))
 
-tweets = [i for i in t.search.tweets(q="#emfcamp")["statuses"]
-          if not i["text"].startswith("RT @")]
+    tweets = [i for i in t.search.tweets(q="#emfcamp")["statuses"]
+              if not i["text"].startswith("RT @")]
 
 t_n = 0
 
@@ -66,7 +69,10 @@ p.set_line(3, line)
 
 line_n = 4
 
-tweets = t.statuses.user_timeline(screen_name="emfcamp")
+if config.twitter_access_key is not None:
+    tweets = []
+else:
+    tweets = t.statuses.user_timeline(screen_name="emfcamp")
 
 t_n = 0
 
