@@ -11,7 +11,7 @@ else:
         config.twitter_consumer_key,
         config.twitter_consumer_secret))
 
-    tweets = [i for i in t.search.tweets(q="#emfcamp")["statuses"]
+    tweets = [i for i in t.search.tweets(q="#emfcamp", count=100)["statuses"]
               if not i["text"].startswith("RT @")]
 
 t_n = 0
@@ -60,7 +60,7 @@ for i in range(10):
 if config.twitter_access_key is None:
     tweets = []
 else:
-    tweets = t.statuses.user_timeline(screen_name="emfcamp")
+    tweets = t.statuses.user_timeline(screen_name="emfcamp", count=100)
 
 t_n = 0
 p_n = 130
@@ -84,11 +84,10 @@ for i in range(10):
 
     line = Line()
     line.add_block(b2, Color.CYAN, None)
+    line.add_text(f"{i + 1}/10")
     p.set_line(3, line)
 
     line_n = 4
-
-    t_n = 0
 
     while line_n <= 20 and t_n < len(tweets):
         line_n = p.add_wrapped_text(
