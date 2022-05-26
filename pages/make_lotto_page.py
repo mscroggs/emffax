@@ -25,7 +25,7 @@ p.set_line(4, line)
 line = Line()
 line.start_double_size()
 for i, j in enumerate(numbers):
-    line.start_fg([Color.BLUE, Color.YELLOW][i % 2])
+    line.start_fg([Color.CYAN, Color.YELLOW][i % 2])
     line.add_text(f"{j}")
 line.start_fg(Color.RED)
 line.add_text(f"{bonus}")
