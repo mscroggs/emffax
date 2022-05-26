@@ -3,6 +3,9 @@
 EMFFAX is appearing in both bars at [EMF 2022](https://emfcamp.org). This repo contains the
 code used to generate its pages.
 
+A snapshot of the tti files created by this repo can be found at
+https://github.com/mscroggs/emffax-2022-tti.
+
 ## Setting up EMFFAX
 
 ### Hardware
