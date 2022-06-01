@@ -41,6 +41,7 @@ index = [
     ("ABOUT EMFFAX", 114),
     ("_EMFFAX", 120),
     ("@EMFFAX", 130),
+    ("MATHSTEROIDS", 140),
     ("HOLIDAYS", 400),
     ("BLUE PETER", 525),
     ("LOTTERY", 555),
