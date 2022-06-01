@@ -153,6 +153,19 @@ class Page:
                 else:
                     return number + 1
 
+    def add_block(self, number, block, color, bg=None, indent=0, color_after=Color.WHITE):
+        blocks = block.strip("\n").split("\n")
+        assert len(blocks) % 3 == 0
+        for i in range(0, len(blocks), 3):
+            line = Line()
+            if bg is not None:
+                line.start_bg(bg)
+            line.add_text(" " * indent)
+            line.add_block("\n".join(blocks[i:i+3]), color, color_after)
+            self.set_line(number, line)
+            number += 1
+        return number
+
 
 class Line:
     def __init__(self):

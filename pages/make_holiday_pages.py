@@ -3,55 +3,26 @@ from page_maker import Page, Line, Color
 p = Page(400)
 
 
-line = Line()
-line.start_bg(Color.BLUE)
-line.add_block("""
+p.add_block(1, """
 ........................................................................
 ........................................................................
 xxxxxxxxxxxxxxxxxxxx.......xxxxxxxx......xxxxxxxx.......................
-""", Color.YELLOW, None)
-line.start_bg(Color.BLACK)
-p.set_line(1, line)
-
-line = Line()
-line.start_bg(Color.BLUE)
-line.add_block("""
 xxxxxxxxxxxxxxx....x.........x....x........x....x.......................
 xxxxxxxxxxxxxxx..xxx.xxxxxxx.x..xxx.xxxxxx.x..x.x.xxxxxxxxxxxxxxxxxxxxxx
 xxxxxxxxxxxxxxx...xx.x..x..x.x...xx.x....x.x....x.x..x..xxxxxxxxxxxxxxxx
-""", Color.YELLOW, None)
-line.start_bg(Color.BLACK)
-p.set_line(2, line)
-
-line = Line()
-line.start_bg(Color.BLUE)
-line.add_block("""
 xxxxxxxxxxxxxxx..xxx.x.....x.x..xxx.x..xxx.x..x.x.x..x..xxxxxxxxxxxxxxxx
 xxxxxxxxxxxxxxx....x.x.x.x.x.x..xxx.x...xx.x..x.x.xx...xxxxxxxxxxxxxxxxx
 xxxxxxxxxxxxxxxxxxxx.x.xxx.x.xxxxxx.x..xxx.xxxxxx.x..x..xxxxxxxxxxxxxxxx
-""", Color.YELLOW, None)
-line.start_bg(Color.BLACK)
-p.set_line(3, line)
-
-line = Line()
-line.start_bg(Color.BLUE)
-line.add_block("""
 .....................x.xxx.x........x..xxx........x..x..xxxxxxxxxxxxxxxx
 ...................xxxxxxxxx......xxxxxxxx......xxxxxxxxxxxxxxxxxxxxxxxx
 ........................................................................
-""", Color.YELLOW, None)
-line.start_bg(Color.BLACK)
-p.set_line(4, line)
+""", Color.YELLOW, bg=Color.BLUE)
 
-line = Line()
-line.start_bg(Color.BLUE)
-line.add_block("""
+p.add_block(5, """
 ........................................................................
 xxxxxxx.xxxxxxx.xxxxxxx.xxxxxx.xxxxxxx.xxxxxxx.xxxxxxx.xxxxxxx..........
 x..x..x.x.....x.x..xxxx.x....x.x....xx.x.....x.x..x..x.x.....x..........
-""", Color.WHITE, None)
-line.start_bg(Color.BLACK)
-p.set_line(5, line)
+""", Color.WHITE, bg=Color.BLUE)
 
 line = Line()
 line.start_bg(Color.BLUE)

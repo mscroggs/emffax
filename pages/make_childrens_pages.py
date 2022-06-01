@@ -5,83 +5,31 @@ p1 = Page(526)
 p2 = Page(527)
 p3 = Page(528)
 
-line = Line()
-line.start_bg(Color.WHITE)
-line.add_text("   ")
-line.add_block("""
+logo = """
 ....................................................
 ........x........................x..................
 .......xx......xx...............xx........x.........
-""", Color.BLUE, None)
-p.set_line(1, line)
-p1.set_line(1, line)
-p2.set_line(1, line)
-p3.set_line(1, line)
-
-line = Line()
-line.start_bg(Color.WHITE)
-line.add_text("   ")
-line.add_block("""
 .....xxxxx....xxx.............xxxxxx.....x.x........
 ...xxxxxxxx..xx.x...........xxxxxxxxx....x.x........
 .....xx..xx.xx.xx..............xx..xx...xxx.........
-""", Color.BLUE, None)
-p.set_line(2, line)
-p1.set_line(2, line)
-p2.set_line(2, line)
-p3.set_line(2, line)
-
-line = Line()
-line.start_bg(Color.WHITE)
-line.add_text("   ")
-line.add_block("""
 ....xx..xxx.x.xx..............xx..xxx...xxxxx.......
 ....xxxxxx.xxxxx..............xxxxxx.xxxxx......x...
 ..xxxxxxx..xxxx.xx.x..xxx...xxxxxx.....xx..xxx.xxx.x
-""", Color.BLUE, None)
-p.set_line(3, line)
-p1.set_line(3, line)
-p2.set_line(3, line)
-p3.set_line(3, line)
-
-line = Line()
-line.start_bg(Color.WHITE)
-line.add_text("   ")
-line.add_block("""
 ...xxxxx..xxxx.xx.xx.xx.x....xxx..xxx.xxx.xx.x.xxxxx
 ...xx.xxx..xx.xx.xx.xx.xx...xx...xx.x.xx.xx.xx.x.xx.
 ...xx..xx.xx.xx.xx.xxxxx....xx.xxxxx.xx..xxxx.xx....
-""", Color.BLUE, None)
-p.set_line(4, line)
-p1.set_line(4, line)
-p2.set_line(4, line)
-p3.set_line(4, line)
-
-line = Line()
-line.start_bg(Color.WHITE)
-line.add_text("   ")
-line.add_block("""
 ..xx...xx.xxxxxxxxxxxxxx...xx...xx..xxx.xxx..xx.....
 ..xx..xxx.xxxxxxxxx.xx.x...xx...xx.xxxxxxxxxxxx.....
 .xxxxxxx.....xx.xx...xx...xx....xxxx.xxx.xxx.xx.....
-""", Color.BLUE, None)
-p.set_line(5, line)
-p1.set_line(5, line)
-p2.set_line(5, line)
-p3.set_line(5, line)
-
-line = Line()
-line.start_bg(Color.WHITE)
-line.add_text("   ")
-line.add_block("""
 .xxxxxx...................xx.....xx.................
 xx..................................................
 ....................................................
-""", Color.BLUE, None)
-p.set_line(6, line)
-p1.set_line(6, line)
-p2.set_line(6, line)
-p3.set_line(6, line)
+"""
+
+p.add_block(1, logo, Color.BLUE, bg=Color.WHITE, indent=3)
+p1.add_block(1, logo, Color.BLUE, bg=Color.WHITE, indent=3)
+p2.add_block(1, logo, Color.BLUE, bg=Color.WHITE, indent=3)
+p3.add_block(1, logo, Color.BLUE, bg=Color.WHITE, indent=3)
 
 line = Line()
 line.start_double_size()
