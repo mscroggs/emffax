@@ -52,7 +52,7 @@ for i in range(len(data) // perpage):
             workshop_pages[n] = (data[v]["name"], page_n)
             line = Line()
             line.start_fg(Color.DEFAULT)
-            line.add_text(f"Workshop {n}          ")
+            line.add_text(f"Workshop {n} ")
             line.start_fg(Color.YELLOW)
             line.add_text(f"{780 + 3 * n - 2}")
             sub_p.set_line(5, line)
