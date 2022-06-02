@@ -43,3 +43,5 @@ for i, data in on_tap.items():
         line.add_text("GBP" + item["price"])
         p.set_line(line_n, line)
         line_n += 1
+
+p.write()
