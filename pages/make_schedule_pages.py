@@ -3,6 +3,70 @@ from tools.url_helpers import load_json
 from datetime import datetime
 
 
+data = load_json("https://www.emfcamp.org/api/villages")
+
+perpage = 17
+page_n = 800 + len(data) // perpage
+
+workshop_villages = {
+    "Nottingham Hackspace": 1,
+    "Scottish Consulate": 2,
+    "Hardware Hacking Area": 3,
+    "Field-FX": 4,
+    "Maths Village": 5,
+}
+workshop_pages = {}
+
+for i in range(len(data) // perpage):
+    p = Page(800 + i)
+    line = Line()
+    line.start_double_size()
+    line.add_text("Villages")
+    line.start_fg(Color.YELLOW)
+    line.add_text(f"{i + 1}/{len(data) // perpage}")
+    p.set_line(2, line)
+
+    for j in range(perpage):
+        line = Line()
+        line.start_fg(Color.DEFAULT)
+        v = perpage * i + j
+        line.add_text((data[v]["name"] + " " * 20)[:20])
+        line.start_fg(Color.YELLOW)
+        line.add_text(f"{page_n}")
+        p.set_line(3 + j, line)
+
+        sub_p = Page(page_n)
+        line = Line()
+        line.start_double_size()
+        line.add_text(data[v]["name"])
+        sub_p.set_line(2, line)
+
+        line = Line()
+        line.start_fg(Color.MAGENTA)
+        if data[v]['location'] is not None:
+            line.add_text(f"{data[v]['location']['coordinates'][0]},"
+                          f"{data[v]['location']['coordinates'][1]}")
+        sub_p.set_line(4, line)
+
+        if data[v]["name"] in workshop_villages:
+            n = workshop_villages[data[v]["name"]]
+            workshop_pages[n] = (data[v]["name"], page_n)
+            line = Line()
+            line.start_fg(Color.DEFAULT)
+            line.add_text(f"Workshop {n}          ")
+            line.start_fg(Color.YELLOW)
+            line.add_text(f"{780 + 3 * n - 2}")
+            sub_p.add_wrapped_text(7, data[v]["description"])
+        else:
+            sub_p.add_wrapped_text(6, data[v]["description"])
+
+        sub_p.write()
+
+        page_n += 1
+
+    p.write()
+
+
 class Content:
     def __init__(self, data, page):
         self.data = data
@@ -46,7 +110,7 @@ stages = ["Stage A", "Stage B", "Stage C"]
 now = datetime.now()
 
 daily = {stage: {"Fri": [], "Sat": [], "Sun": []}
-         for stage in stages}
+         for stage in stages + list(workshop_pages.keys())}
 
 upcoming = {}
 for item in data:
@@ -106,6 +170,7 @@ p.write()
 
 # Pages for each stage
 index = []
+index.append(("Workshops", 780))
 index.append(("Now & Next", 606))
 index.append(("Thursday films", 619))
 index.append(("Friday films", 620))
@@ -149,6 +214,67 @@ line = Line()
 line.start_fg(Color.MAGENTA)
 line.start_double_size()
 line.add_text("EMF Schedule")
+p.set_line(2, line)
+
+index.sort(key=lambda i: i[1])
+
+for i, (page, n) in enumerate(index):
+    line = Line()
+    line.start_fg(Color.YELLOW)
+    line.add_text((page + " " * 20)[:20])
+    line.start_fg(Color.DEFAULT)
+    line.add_text(f"{n}")
+    p.set_line(5 + i, line)
+
+p.write()
+
+# Workshops
+index = []
+pn = 0
+for day in ["Friday", "Saturday", "Sunday"]:
+    for venue, info in workshop_pages.items():
+        short_day = day[:3]
+
+        index.append((f"Workshop {venue} {day}", 781 + pn))
+
+        p = Page(781 + pn)
+        line = Line()
+        line.start_fg(Color.YELLOW)
+        line.start_double_size()
+        line.add_text(f"Workshop {venue} {day}")
+        p.set_line(2, line)
+
+        line = Line()
+        line.start_fg(Color.DEFAULT)
+        line.add_text((info[0] + " " * 20)[:20])
+        line.start_fg(Color.CYAN)
+        line.add_text(f"info[1]")
+        p.set_line(4, line)
+
+        line_n = 5
+
+        for item in daily[venue][short_day][:17]:
+            line = Line()
+            line.start_fg(Color.CYAN)
+            line.add_text(item.start.strftime("%H:%M"))
+            line.start_fg(Color.DEFAULT)
+            if item.page is None:
+                line.add_text(item.data["title"][:31])
+            else:
+                line.add_text((item.data["title"] + " " * 27)[:27])
+                line.start_fg(Color.YELLOW)
+                line.add_text(f"{item.page}")
+            p.set_line(line_n, line)
+            line_n += 1
+
+        p.write()
+        pn += 1
+
+p = Page(780)
+line = Line()
+line.start_fg(Color.MAGENTA)
+line.start_double_size()
+line.add_text("Workshops")
 p.set_line(2, line)
 
 index.sort(key=lambda i: i[1])
