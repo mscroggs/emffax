@@ -33,7 +33,7 @@ for name, game in [
     line = Line()
     line.start_fg(Color.DEFAULT)
     if game in scores:
-        line.add_text(f"{scores[game][0][1]} {scores[game][0][0]}")
+        line.add_text(f"{scores[game][0][1].upper()} {scores[game][0][0]}")
     else:
         line.add_text("(no high score yet)")
     p.set_line(line_n, line)
