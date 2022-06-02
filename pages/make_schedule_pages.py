@@ -55,6 +55,7 @@ for i in range(len(data) // perpage):
             line.add_text(f"Workshop {n}          ")
             line.start_fg(Color.YELLOW)
             line.add_text(f"{780 + 3 * n - 2}")
+            sub_p.set_line(5, line)
             sub_p.add_wrapped_text(7, data[v]["description"])
         else:
             sub_p.add_wrapped_text(6, data[v]["description"])
@@ -245,7 +246,7 @@ for day in ["Friday", "Saturday", "Sunday"]:
 
         line = Line()
         line.start_fg(Color.DEFAULT)
-        line.add_text((info[0] + " " * 20)[:20])
+        line.add_text((info[0] + " " * 30)[:30])
         line.start_fg(Color.CYAN)
         line.add_text(f"{info[1]}")
         p.set_line(4, line)
