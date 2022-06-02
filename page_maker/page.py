@@ -162,7 +162,6 @@ class Page:
                 line.start_bg(bg)
             if indent > 0:
                 line.add_text(" " * indent)
-            print("\n".join(blocks[i:i+3]), color, color_after)
             line.add_block("\n".join(blocks[i:i+3]), color, color_after)
             self.set_line(number, line)
             number += 1
