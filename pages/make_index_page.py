@@ -47,6 +47,7 @@ index = [
     ("LOTTERY", 555),
     ("EMF SCHEDULE", 600),
     ("NOW & NEXT", 606),
+    ("VILLAGES", 800),
 ]
 
 for n, (i, j) in enumerate(zip(index[::2], index[1::2])):
