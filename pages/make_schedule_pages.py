@@ -2,7 +2,6 @@ from page_maker import Page, Line, Color
 from tools.url_helpers import load_json
 from datetime import datetime
 
-
 data = load_json("https://www.emfcamp.org/api/villages")
 
 perpage = 17
@@ -248,7 +247,7 @@ for day in ["Friday", "Saturday", "Sunday"]:
         line.start_fg(Color.DEFAULT)
         line.add_text((info[0] + " " * 20)[:20])
         line.start_fg(Color.CYAN)
-        line.add_text(f"info[1]")
+        line.add_text(f"{info[1]}")
         p.set_line(4, line)
 
         line_n = 5
