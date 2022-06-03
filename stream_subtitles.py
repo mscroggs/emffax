@@ -9,6 +9,7 @@ async def hello():
     global lines
     async with websockets.connect("wss://stagetext.emfcamp.app/socket/a", ssl=True) as w:
         line = await w.recv()
+    print(line)
     words = line.split()
     for w in words:
         if len(lines) == 0:

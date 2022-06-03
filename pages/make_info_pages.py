@@ -48,3 +48,49 @@ n = p.add_wrapped_text(
     "pages. BBC Two continued to broadcast pages from CEEFAX until 2012.")
 
 p.write()
+
+p = Page(116)
+
+line = Line()
+n = p.add_wrapped_text(
+    2,
+    "EMFFAX's source code is available at "
+    "https://github.com/mscroggs/emffax-2022")
+
+p.add_block(n + 1, """
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xx.......xx.xxxx...xx.xx.......xx
+xx.xxxxx.x..x...xxx.xx.x.xxxxx.xx
+xx.x...x.xx...xx.xxx...x.x...x.xx
+xx.x...x.x..x.x.x.x..x.x.x...x.xx
+xx.x...x.xxx.x.xx.xxxx.x.x...x.xx
+xx.xxxxx.x.x.xx.xx..x.xx.xxxxx.xx
+xx.......x.x.x.x.x.x.x.x.......xx
+xxxxxxxxxxxxxx.x.x.xx..xxxxxxxxxx
+xx.....x.....x.xx....x..x.x.x.xxx
+xx.xxx..xxx.xxxxx.xx....x...x.xxx
+xxx.xx....x.x...x.x.x.xxx.x..xxxx
+xx.xxx.xx.x...xx.x....x.....xx.xx
+xxxx..x.....x.x.x.x.xx.....xxxxxx
+xxxx..xxx..x.x.xxx.xxx..xxx.x.xxx
+xx..x.xx.xxxxxx.x.x.x.xxxxx....xx
+xxx...x.xxx.xx.x.x.x...x...xx..xx
+xxxxxx.x.x.xxx..x.x.xx.xx.xxxxxxx
+xx.xxx..xx.xxxxxxx.xx..xx...xx.xx
+xx.x..xx...x...xx.x.x.xxxxx..xxxx
+xx.xxx..xxx...xxxx.x.......xx..xx
+xx.x.xx.....x.xxx...xx........xxx
+xxxxxxxxxx.x.x..x..xx..xxx.xx.xxx
+xx.......x...xx..xx.x..x.x...xxxx
+xx.xxxxx.xx..x..xx.xxx.xxx.x...xx
+xx.x...x.x.xxx.x.....x.....x...xx
+xx.x...x.x.xxxxxx..xxx..x.xxxxxxx
+xx.x...x.x..x..xx.x...x...xx..xxx
+xx.xxxxx.x....xx.x...x..xxx..x.xx
+xx.......x.x..xxx...x....x...xxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+""", Color.WHITE)
+
+p.write()

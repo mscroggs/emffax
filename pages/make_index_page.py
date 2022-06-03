@@ -64,6 +64,7 @@ p.set_line(7, line)
 index = [
     ("NEWS", 101),
     ("ABOUT EMFFAX", 114),
+    ("SOURCE CODE", 116),
     ("_EMFCAMP", 120),
     ("@EMFCAMP", 130),
     ("MATHSTEROIDS", 140),
