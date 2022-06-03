@@ -121,7 +121,7 @@ for item in data:
         if c.venue not in upcoming:
             upcoming[c.venue] = []
         upcoming[c.venue].append(c)
-    if c.venue in daily:
+    if c.venue in daily and c.start.strftime("%a") in daily[c.venue]:
         daily[c.venue][c.start.strftime("%a")].append(c)
 
 page_n = 630
