@@ -240,7 +240,7 @@ for venue, info in workshop_pages.items():
         short_day = day[:3]
 
         index.append((f"Workshop {venue} {day}",
-                      781 + pn + i, today_n))
+                      781 + pn + i + today_n))
 
         p = Page(781 + pn)
         line = Line()
