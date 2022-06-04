@@ -112,7 +112,7 @@ stages = ["Stage A", "Stage B", "Stage C"]
 now = datetime.now()
 
 daily = {stage: {"Fri": [], "Sat": [], "Sun": []}
-         for stage in stages + list(workshop_pages.keys())}
+         for stage in stages + [f"Workshop {i}" for i in workshop_pages]}
 
 upcoming = {}
 for item in data:
@@ -231,13 +231,16 @@ for i, (page, n) in enumerate(index):
 p.write()
 
 # Workshops
+today_n = ["Fri", "Sat", "Sun"].index(now.strftime("%a"))
+
 index = []
 pn = 0
-for day in ["Friday", "Saturday", "Sunday"]:
-    for venue, info in workshop_pages.items():
+for venue, info in workshop_pages.items():
+    for day in ["Friday", "Saturday", "Sunday"]:
         short_day = day[:3]
 
-        index.append((f"Workshop {venue} {day}", 781 + pn))
+        index.append((f"Workshop {venue} {day}",
+                      781 + pn + i, today_n))
 
         p = Page(781 + pn)
         line = Line()
@@ -255,7 +258,7 @@ for day in ["Friday", "Saturday", "Sunday"]:
 
         line_n = 5
 
-        for item in daily[venue][short_day][:17]:
+        for item in daily[f"Workshop {venue}"][short_day][:17]:
             line = Line()
             line.start_fg(Color.CYAN)
             line.add_text(item.start.strftime("%H:%M"))
