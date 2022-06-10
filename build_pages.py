@@ -20,6 +20,8 @@ os.system(f"mkdir {pyfax.config.build_dir}")
 
 os.system(f"cp {this_dir}/static/* {pyfax.config.build_dir}")
 
+pyfax.pages.make_test_page()
+
 for file in os.listdir(f"{this_dir}/pages"):
     if file.endswith(".py") and not file.startswith("_"):
         print(f"Running {file}")
