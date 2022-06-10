@@ -2,8 +2,11 @@ from pyfax import Page, Line, Color
 from tools.url_helpers import load_json
 from datetime import datetime
 
-sessions = load_json("https://bar.emf.camp/api/sessions.json")
-on_tap = load_json("https://bar.emf.camp/api/on-tap.json")
+# sessions = load_json("https://bar.emf.camp/api/sessions.json")
+# on_tap = load_json("https://bar.emf.camp/api/on-tap.json")
+
+sessions = {"sessions": []}
+on_tap = {}
 
 open = False
 now = datetime.now()
