@@ -1,6 +1,6 @@
 from pyfax import Page, Line, Color
 from datetime import datetime
-from tools.url_helpers import load_csv
+from pyfax.tools.url_helpers import load_csv
 
 p = Page(555)
 

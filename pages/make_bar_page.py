@@ -1,5 +1,5 @@
 from pyfax import Page, Line, Color
-from tools.url_helpers import load_json
+# from pyfax.tools.url_helpers import load_json
 from datetime import datetime
 
 # sessions = load_json("https://bar.emf.camp/api/sessions.json")

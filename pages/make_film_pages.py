@@ -1,5 +1,5 @@
 from pyfax import Page, Line, Color
-from tools.url_helpers import load_json
+from pyfax.tools.url_helpers import load_json
 
 data = load_json("https://emffilms.org/api/2022/schedule")
 
