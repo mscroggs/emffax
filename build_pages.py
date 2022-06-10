@@ -1,19 +1,31 @@
-import config
+import pyfax
 import os
-
-assert config.build_dir != "/"
+import importlib
 
 this_dir = os.path.dirname(os.path.realpath(__file__))
+pyfax.config.build_dir = os.path.join(this_dir, "_pages")
 
-os.system(f"rm -rf {config.build_dir}")
-os.system(f"mkdir {config.build_dir}")
+try:
+    import localconfig
+    for i in dir(localconfig):
+        if not i.startswith("__"):
+            setattr(pyfax.config, i, getattr(localconfig, i))
+except ImportError:
+    pass
 
-os.system(f"cp {this_dir}/static/* {config.build_dir}")
+assert pyfax.config.build_dir != "/"
+
+os.system(f"rm -rf {pyfax.config.build_dir}")
+os.system(f"mkdir {pyfax.config.build_dir}")
+
+os.system(f"cp {this_dir}/static/* {pyfax.config.build_dir}")
+
+pyfax.pages.make_test_page()
 
 for file in os.listdir(f"{this_dir}/pages"):
     if file.endswith(".py") and not file.startswith("_"):
         print(f"Running {file}")
-        os.system(f"PYTHONPATH=\"$PYTHONPATH:{this_dir}\" python3 pages/{file}")
+        importlib.import_module(f"pages.{file[:-3]}")
 
-if config.output_dir is not None:
-    os.system(f"cp {config.build_dir}/* {config.output_dir}")
+if pyfax.config.output_dir is not None:
+    os.system(f"cp {pyfax.config.build_dir}/* {pyfax.config.output_dir}")

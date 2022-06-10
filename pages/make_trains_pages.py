@@ -1,4 +1,4 @@
-from page_maker import Page, Color, Line
+from pyfax import Page, Color, Line
 import config
 
 

@@ -1,5 +1,5 @@
-from page_maker import Page, Line, Color
-from tools.url_helpers import load_json
+from pyfax import Page, Line, Color
+from pyfax.tools.url_helpers import load_json
 
 scores = load_json(
     "https://raw.githubusercontent.com/mscroggs/"

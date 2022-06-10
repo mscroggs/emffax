@@ -1,5 +1,5 @@
-from page_maker import Page, Line, Color
-from tools.url_helpers import load_rss
+from pyfax import Page, Line, Color
+from pyfax.tools.url_helpers import load_rss
 
 index = Page(101)
 line = Line()
