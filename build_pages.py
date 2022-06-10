@@ -5,6 +5,10 @@ import importlib
 this_dir = os.path.dirname(os.path.realpath(__file__))
 pyfax.config.build_dir = os.path.join(this_dir, "_pages")
 
+import config
+for i in dir(config):
+    if not i.startswith("__"):
+        setattr(pyfax.config, i, getattr(config, i))
 try:
     import localconfig
     for i in dir(localconfig):
