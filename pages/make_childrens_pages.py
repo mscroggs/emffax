@@ -1,4 +1,4 @@
-from page_maker import Page, Line, Color
+from pyfax import Page, Line, Color
 
 p = Page(525)
 p1 = Page(526)
