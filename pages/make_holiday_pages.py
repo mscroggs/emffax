@@ -282,7 +282,7 @@ things_to_see = {
         "Walt Disney Concert Hall", "Amoeba Music", "Cruise along Mulholland",
         "Japanese American National Museum", "Huntington Library"
     ],
-    "Ledbury": ["Electromagnetic Field 2022"],
+    "Ledbury": ["Electromagnetic Field 2024"],
     "Langkawi": [
         "Walk on the beach", "Shopping (tax-free)", "Island hopping",
         "Jet-skiing"

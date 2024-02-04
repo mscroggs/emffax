@@ -107,7 +107,7 @@ class Content:
         p.write()
 
 
-data = load_json("https://www.emfcamp.org/schedule/2022.json")
+data = load_json("https://www.emfcamp.org/schedule/2024.json")
 stages = ["Stage A", "Stage B", "Stage C"]
 now = datetime.now()
 

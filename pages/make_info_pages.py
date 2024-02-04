@@ -21,7 +21,7 @@ n = p.add_wrapped_text(
 n = p.add_wrapped_text(
     n + 1,
     "The Python code that generates these pages can be found on "
-    "GitHub at github.com/mscroggs/emffax-2022")
+    "GitHub at github.com/mscroggs/emffax")
 
 p.write()
 
@@ -55,40 +55,40 @@ line = Line()
 n = p.add_wrapped_text(
     2,
     "EMFFAX's source code is available at "
-    "https://github.com/mscroggs/emffax-2022")
+    "https://github.com/mscroggs/emffax")
 
 p.add_block(n + 1, """
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-xx.......xx.xxxx...xx.xx.......xx
-xx.xxxxx.x..x...xxx.xx.x.xxxxx.xx
-xx.x...x.xx...xx.xxx...x.x...x.xx
-xx.x...x.x..x.x.x.x..x.x.x...x.xx
-xx.x...x.xxx.x.xx.xxxx.x.x...x.xx
-xx.xxxxx.x.x.xx.xx..x.xx.xxxxx.xx
+xx.......xxx.x..x.xxx.xx.......xx
+xx.xxxxx.x.x.xx...x.xx.x.xxxxx.xx
+xx.x...x.xxxxx..x.xx...x.x...x.xx
+xx.x...x.x...x.x..x..x.x.x...x.xx
+xx.x...x.xx.xxxxx.xxxx.x.x...x.xx
+xx.xxxxx.x..x..xxx..x.xx.xxxxx.xx
 xx.......x.x.x.x.x.x.x.x.......xx
-xxxxxxxxxxxxxx.x.x.xx..xxxxxxxxxx
-xx.....x.....x.xx....x..x.x.x.xxx
-xx.xxx..xxx.xxxxx.xx....x...x.xxx
-xxx.xx....x.x...x.x.x.xxx.x..xxxx
-xx.xxx.xx.x...xx.x....x.....xx.xx
-xxxx..x.....x.x.x.x.xx.....xxxxxx
-xxxx..xxx..x.x.xxx.xxx..xxx.x.xxx
-xx..x.xx.xxxxxx.x.x.x.xxxxx....xx
-xxx...x.xxx.xx.x.x.x...x...xx..xx
-xxxxxx.x.x.xxx..x.x.xx.xx.xxxxxxx
-xx.xxx..xx.xxxxxxx.xx..xx...xx.xx
-xx.x..xx...x...xx.x.x.xxxxx..xxxx
-xx.xxx..xxx...xxxx.x.......xx..xx
-xx.x.xx.....x.xxx...xx........xxx
-xxxxxxxxxx.x.x..x..xx..xxx.xx.xxx
-xx.......x...xx..xx.x..x.x...xxxx
-xx.xxxxx.xx..x..xx.xxx.xxx.x...xx
-xx.x...x.x.xxx.x.....x.....x...xx
-xx.x...x.x.xxxxxx..xxx..x.xxxxxxx
-xx.x...x.x..x..xx.x...x...xx..xxx
-xx.xxxxx.x....xx.x...x..xxx..x.xx
-xx.......x.x..xxx...x....x...xxxx
+xxxxxxxxxxx...xx.x.xx..xxxxxxxxxx
+xx.....x....x.xxx....x..x.x.x.xxx
+xxx.x.x.x.xx.x....xx....x...x.xxx
+xx..x..x.xxx.xx...x.x.xxx.x..xxxx
+xxx....xxxxxxx..xx....x.....xx.xx
+xxx.xx.x.xx..x.x..x.xx.....xxxxxx
+xx.x.xxxx.xxxxxxxx.xxx..xxx.xxxxx
+xx.xxxx..x..x..xx.x.x.xxxxx....xx
+xx..xx..xx.xx.xx.x.x...x...xx..xx
+xxx.xx.x......xxx.x.xx.xx.xxxxxxx
+xx.x.xxxx.x..x...x.xx..xx...x..xx
+xx.xx.x..xx.xxx...x.x.xxxxx...xxx
+xx.xx.x.x..xxx..xx.x.......xx..xx
+xx.xx.xx..x..x.x....xx.......xxxx
+xxxxxxxxxx.xxxxxx..xx..xxx.xx.xxx
+xx.......x.x...xxxx.x..x.x.xx.xxx
+xx.xxxxx.xx.x.xx.x.xxx.xxx.x...xx
+xx.x...x.x....xxx....x.....x...xx
+xx.x...x.x.xxx.....xxx..x.xxxxxxx
+xx.x...x.x...xx...x...x...xx..xxx
+xx.xxxxx.x.xxx..xx...x..xxx..x.xx
+xx.......x...x.x....x....x...xxxx
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 """, Color.WHITE)
