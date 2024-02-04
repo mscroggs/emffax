@@ -1,6 +1,4 @@
 requests
 feedparser
 websockets
-nrewebservices
-twitter
 pyfax
