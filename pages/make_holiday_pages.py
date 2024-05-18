@@ -100,9 +100,9 @@ line.add_block("""
 line.start_fg(Color.YELLOW)
 line.add_text("USA")
 line.start_fg(Color.GREEN)
-line.add_text("Los Angeles")
+line.add_text("New York")
 line.start_fg(Color.CYAN)
-line.add_text("....401")
+line.add_text(".......401")
 line.start_bg(Color.BLACK)
 p.set_line(11, line)
 
@@ -116,7 +116,7 @@ line.add_block("""
 line.start_fg(Color.YELLOW)
 line.add_text("ENGLAND")
 line.start_fg(Color.GREEN)
-line.add_text("Ledbury")
+line.add_text("Eastnor")
 line.start_fg(Color.CYAN)
 line.add_text("....402")
 line.start_bg(Color.BLACK)
@@ -130,11 +130,11 @@ xxx.xx.xx.xxxxxxxxxx....
 x.x.x.........xxxx.xxxx.
 """, Color.GREEN, None)
 line.start_fg(Color.YELLOW)
-line.add_text("MALAYSIA")
+line.add_text("AUSTRALIA")
 line.start_fg(Color.GREEN)
-line.add_text("Langkawi")
+line.add_text("Melbourne")
 line.start_fg(Color.CYAN)
-line.add_text("..403")
+line.add_text("403")
 line.start_bg(Color.BLACK)
 p.set_line(13, line)
 
@@ -154,9 +154,9 @@ line.add_block("""
 line.start_fg(Color.YELLOW)
 line.add_text("N'LANDS")
 line.start_fg(Color.GREEN)
-line.add_text("Zeewolde")
+line.add_text("Gee'cht")
 line.start_fg(Color.CYAN)
-line.add_text("...404")
+line.add_text("....404")
 line.start_bg(Color.BLACK)
 p.set_line(14, line)
 
@@ -174,11 +174,11 @@ line.add_block("""
 xxx....x..
 """, Color.GREEN, None)
 line.start_fg(Color.YELLOW)
-line.add_text("NORWAY")
+line.add_text("ENGLAND")
 line.start_fg(Color.GREEN)
-line.add_text("Kautokeino")
+line.add_text("Boulby")
 line.start_fg(Color.CYAN)
-line.add_text("..405")
+line.add_text(".....405")
 line.start_bg(Color.BLACK)
 p.set_line(15, line)
 
@@ -274,26 +274,28 @@ p.lines[21] = line
 p.write()
 
 things_to_see = {
-    "Los Angeles": [
-        "Venice Beach", "Stroll along the stars in Hollywood",
-        "Shop in style on Rodeo Drive", "Museum of Jurassic Technology",
-        "Los Angeles County Museum of Art", "Griffith Observatory",
-        "Disneyland", "The Broad Museum", "Watts Towers Arts Center",
-        "Walt Disney Concert Hall", "Amoeba Music", "Cruise along Mulholland",
-        "Japanese American National Museum", "Huntington Library"
+    "New York": [
+        "National Museum of Mathematics (MoMath)",
+        "Statue of Liberty", "Empire State Building",
+        "Central Park",
+        "Brooklyn Bridge",
     ],
-    "Ledbury": ["Electromagnetic Field 2024"],
-    "Langkawi": [
-        "Walk on the beach", "Shopping (tax-free)", "Island hopping",
-        "Jet-skiing"
+    "Eastnor": [
+        "Read EMFFAX", "Walk up to the Obelisk",
+        "Maths Village", "The Robot Arms",
+        "Volunteering", "Null Sector",
+        "Hacky Racers", "Community Cultivation Compilation (CCC)",
     ],
-    "Zeewolde": ["MCH2022"],
-    "Kautokeino": [
-        "RiddoDuottar Museum", "Juhls Silver Gallery", "Samiway",
-        "Sokkiadventure", "Pikefossen", "Kautokeino Church", "Freeze"
+    "Melbourne": [
+        "Visit the Neighbours Set",
+    ],
+    "Geestmerambacht": ["WHY2025"],
+    "Boulby": [
+        "Boulby Underground Laboratory",
+        "Boulby Sound Mirror"
     ],
     "Lower Brailes": [
-        "Brailes church", "Mine Hill", "Brailes Hill", "Castle Hill",
+        "Brailes Church", "Mine Hill", "Brailes Hill", "Castle Hill",
         "Baldwin's", "Paddock Farm", "Playing Fields", "Fairfax Interiors"
     ]
 }
