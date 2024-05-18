@@ -29,7 +29,7 @@ class Station:
         from nrewebservices.ldbws import Session
 
         session = Session(
-            "https://lite.realtime.nationalrail.co.uk/OpenLDBWS/wsdl.aspx?ver=2016-02-16",
+            "https://realtime.nationalrail.co.uk/OpenLDBWS/wsdl.aspx?ver=2021-11-01",
             config.open_ldbws_key)
         board = session.get_station_board_with_details(
             self.code, rows=14, include_departures=True, include_arrivals=False)
