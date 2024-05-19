@@ -34,6 +34,8 @@ class Station:
         board = session.get_station_board_with_details(
             self.code, rows=14, include_departures=True, include_arrivals=False)
 
+        print(board)
+
         line_n = 5
         first = True
 
