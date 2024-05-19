@@ -3,10 +3,3 @@
 
 # Sign up at http://realtime.nationalrail.co.uk/OpenLDBWSRegistration/
 open_ldbws_key = None
-
-# Twitter keys
-twitter_access_key = None
-twitter_access_secret = None
-twitter_consumer_key = None
-twitter_consumer_secret = None
-
