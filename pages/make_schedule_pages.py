@@ -5,7 +5,7 @@ from datetime import datetime
 data = load_json("https://www.emfcamp.org/api/villages")
 
 perpage = 17
-page_n = 800 + len(data) // perpage
+page_n = 200 + len(data) // perpage
 
 workshop_villages = {
     "Drop-In Workshops": 0,
@@ -16,10 +16,10 @@ workshop_villages = {
     "Maths Village": 5,
     "Hardware Hacking Area": 6,
 }
-workshop_pages = {}
+workshop_pages = []
 
 for i in range(len(data) // perpage):
-    p = Page(800 + i)
+    p = Page(200 + i)
     line = Line()
     line.start_double_size()
     line.add_text("Villages")
@@ -50,7 +50,7 @@ for i in range(len(data) // perpage):
 
         if data[v]["name"] in workshop_villages:
             n = workshop_villages[data[v]["name"]]
-            workshop_pages[n] = (data[v]["name"], page_n)
+            workshop_pages.append((n, data[v]["name"], page_n))
             line = Line()
             line.start_fg(Color.DEFAULT)
             line.add_text(f"Workshop {n} ")
@@ -112,8 +112,10 @@ data = load_json("https://www.emfcamp.org/schedule/2024.json")
 stages = ["Stage A", "Stage B", "Stage C"]
 now = datetime.now()
 
+workshop_pages.sort(key=lambda x: x[0])
+
 daily = {stage: {"Fri": [], "Sat": [], "Sun": []}
-         for stage in stages + [f"Workshop {i}" for i in workshop_pages]}
+         for stage in stages + [f"Workshop {i[0]}" for i in workshop_pages]}
 
 upcoming = {}
 for item in data:
@@ -235,7 +237,7 @@ today_n = ["Fri", "Sat", "Sun"].index(now.strftime("%a"))
 
 index = []
 pn = 0
-for venue, info in workshop_pages.items():
+for venue, v_name, v_page in workshop_pages:
     for day in ["Friday", "Saturday", "Sunday"]:
         short_day = day[:3]
 
@@ -251,9 +253,9 @@ for venue, info in workshop_pages.items():
 
         line = Line()
         line.start_fg(Color.DEFAULT)
-        line.add_text((info[0] + " " * 30)[:30])
+        line.add_text((v_name + " " * 30)[:30])
         line.start_fg(Color.CYAN)
-        line.add_text(f"{info[1]}")
+        line.add_text(f"{v_page}")
         p.set_line(4, line)
 
         line_n = 5

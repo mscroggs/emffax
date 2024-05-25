@@ -63,18 +63,15 @@ p.set_line(7, line)
 # List pages
 index = [
     ("NEWS", 101),
-    ("ABOUT EMFFAX", 114),
-    ("SOURCE CODE", 116),
-    ("_EMFCAMP", 120),
-    ("@EMFCAMP", 130),
-    ("MATHSTEROIDS", 140),
-    ("ROBOT ARMS", 200),
+    ("ABOUT EMFFAX", 113),
+    ("ROBOT ARMS", 150),
+    ("VILLAGES", 200),
     ("HOLIDAYS", 400),
+    ("TRAINS", 408),
     ("BLUE PETER", 525),
     ("LOTTERY", 555),
     ("EMF SCHEDULE", 600),
     ("NOW & NEXT", 606),
-    ("VILLAGES", 800),
 ]
 
 for n, (i, j) in enumerate(zip(index[::2], index[1::2])):

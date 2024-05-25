@@ -17,7 +17,7 @@ for s in sessions["sessions"]:
         open = True
         break
 
-p = Page(200)
+p = Page(150)
 
 line = Line()
 line.start_double_size()
