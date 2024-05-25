@@ -18,7 +18,6 @@ for i, (feed, title, tagline) in enumerate([
     ("http://feeds.bbci.co.uk/news/education/rss.xml?edition=uk", "Education", "From BBC News"),
     ("https://www.theguardian.com/uk/rss", "The Guardian", None),
     ("http://www.independent.co.uk/news/rss", "The Independent", None),
-    ("http://www.telegraph.co.uk/newsfeed/rss/news_breaking.xml", "The Telegraph", None),
     ("http://blog.emfcamp.org/rss", "emfcamp.org", None),
     ("http://www.metoffice.gov.uk/public/data/PWSCache/WarningsRSS/Region/UK",
      "Weather warnings", "From the Met Office"),

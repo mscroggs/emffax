@@ -8,11 +8,13 @@ perpage = 17
 page_n = 800 + len(data) // perpage
 
 workshop_villages = {
+    "Drop-In Workshops": 0,
     "Nottingham Hackspace": 1,
-    "Scottish Consulate": 2,
-    "Hardware Hacking Area": 3,
+    "Milliways": 2,
+    "Furry High Commssion": 3,
     "Field-FX": 4,
     "Maths Village": 5,
+    "Hardware Hacking Area": 6,
 }
 workshop_pages = {}
 
@@ -33,7 +35,6 @@ for i in range(len(data) // perpage):
         line.start_fg(Color.YELLOW)
         line.add_text(f"{page_n}")
         p.set_line(3 + j, line)
-
         sub_p = Page(page_n)
         line = Line()
         line.start_double_size()
@@ -184,7 +185,6 @@ for day in ["Friday", "Saturday", "Sunday"]:
         short_day = day[:3]
 
         index.append((f"{venue} {day}", 610 + pn))
-
         p = Page(610 + pn)
         line = Line()
         line.start_fg(Color.YELLOW)
@@ -240,9 +240,9 @@ for venue, info in workshop_pages.items():
         short_day = day[:3]
 
         index.append((f"Workshop {venue} {day}",
-                      781 + pn + i + today_n))
+                      501 + pn + i + today_n))
 
-        p = Page(781 + pn)
+        p = Page(501 + pn)
         line = Line()
         line.start_fg(Color.YELLOW)
         line.start_double_size()
@@ -275,7 +275,7 @@ for venue, info in workshop_pages.items():
         p.write()
         pn += 1
 
-p = Page(780)
+p = Page(500)
 line = Line()
 line.start_fg(Color.MAGENTA)
 line.start_double_size()

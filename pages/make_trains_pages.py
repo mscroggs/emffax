@@ -1,4 +1,5 @@
 from pyfax import Page, Color, Line
+import pytrains
 import config
 
 
@@ -17,32 +18,15 @@ class Station:
         line.add_text(self.name)
         p.set_line(2, line)
 
-        if config.open_ldbws_key is None:
-            line = Line()
-            line.start_fg(Color.RED)
-            line.add_text("Need OpenLDBWS key")
-            p.set_line(4, line)
-
-            p.write()
-            return
-
-        from nrewebservices.ldbws import Session
-
-        session = Session(
-            "https://realtime.nationalrail.co.uk/OpenLDBWS/wsdl.aspx?ver=2021-11-01",
-            config.open_ldbws_key)
-        board = session.get_station_board_with_details(
-            self.code, rows=14, include_departures=True, include_arrivals=False)
-
-        print(board)
+        station = pytrains.Station(self.code)
 
         line_n = 5
         first = True
 
-        for service in board.train_services:
+        for service in station.services:
             line = Line()
             line.start_fg(Color.YELLOW)
-            line.add_text(service.std)
+            line.add_text(service.expectedDepartureTime.strftime("%H:%M"))
             line.start_fg(Color.DEFAULT)
             line.add_text((service.destination + " " * 25)[:25])
             line.start_fg(Color.CYAN)
@@ -53,8 +37,7 @@ class Station:
             if first:
                 first = False
                 line_n = p.add_wrapped_text(line_n, "Calling at: " + ", ".join(
-                    [destination.location_name
-                     for destination in service.subsequent_calling_points[0].calling_points]))
+                    [destination.name for destination in service.callingPoints]))
                 line_n += 1
 
             if line_n > 20:
@@ -68,17 +51,14 @@ trains = [
     for n, c in [
         ("Ledbury", "LED"),
         ("Euston", "EUS"),
-        ("King's Cross", "KGX"),
-        ("St Pancras", "STP"),
-        ("Marylebone", "MYB"),
         ("Paddington", "PAD"),
         ("Waterloo", "WAT"),
         ("Banbury", "BAN"),
-        ("Basingstoke", "BSK"),
         ("Birmingham New St", "BHM"),
-        ("Cambridge", "CBG"),
         ("Durham", "DHM"),
         ("Edinburgh", "EDB"),
+        ("King's Cross", "KGX"),
+        ("King's Lynn", "KLN"),
         ("Manchester Picc", "MAN"),
         ("Oxford", "OXF"),
         ("Reading", "RDG"),
