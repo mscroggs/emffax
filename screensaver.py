@@ -1,3 +1,9 @@
+import os
+os.system("ifconfig")
+
+print()()
+
+
 import config
 import curses
 import locale
