@@ -1,7 +1,9 @@
 import os
-os.system("ifconfig")
+from time import sleep
 
-print()()
+while True:
+    os.system("ifconfig")
+    sleep(2)
 
 
 import config
