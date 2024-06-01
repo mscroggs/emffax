@@ -4,6 +4,7 @@ import importlib
 
 this_dir = os.path.dirname(os.path.realpath(__file__))
 pyfax.config.build_dir = os.path.join(this_dir, "_pages")
+pyfax.config.tti_dir = os.path.join(this_dir, "tti")
 
 import config  # noqa: E402
 for i in dir(config):
@@ -21,6 +22,8 @@ assert pyfax.config.build_dir != "/"
 
 os.system(f"rm -rf {pyfax.config.build_dir}")
 os.system(f"mkdir {pyfax.config.build_dir}")
+if pyfax.config.tti_dir is not None:
+    os.system(f"cp {pyfax.config.tti_dir}/*.tti {pyfax.config.build_dir}")
 
 os.system(f"cp {this_dir}/static/* {pyfax.config.build_dir}")
 

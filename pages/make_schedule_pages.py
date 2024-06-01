@@ -135,6 +135,8 @@ for day in ["Fri", "Sat", "Sun"]:
             c.page = page_n
             c.make_page()
             page_n += 1
+            if page_n == 695:
+                page_n += 1
 
 # Now and next page
 p = Page(606)
