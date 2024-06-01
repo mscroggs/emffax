@@ -1,11 +1,3 @@
-import os
-from time import sleep
-
-while True:
-    os.system("ifconfig")
-    sleep(2)
-
-
 import config
 import curses
 import locale
