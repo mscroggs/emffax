@@ -1,12 +1,9 @@
 from pyfax import Page, Line, Color
-# from pyfax.tools.url_helpers import load_json
+from pyfax.tools.url_helpers import load_json
 from datetime import datetime
 
-# sessions = load_json("https://bar.emf.camp/api/sessions.json")
-# on_tap = load_json("https://bar.emf.camp/api/on-tap.json")
-
-sessions = {"sessions": []}
-on_tap = {}
+sessions = load_json("https://bar.emf.camp/api/sessions.json")
+on_tap = load_json("https://bar.emf.camp/api/on-tap.json")
 
 open = False
 now = datetime.now()
@@ -41,9 +38,9 @@ for i, data in on_tap.items():
     for item in data:
         line = Line()
         line.start_fg(Color.DEFAULT)
-        line.add_text((item["fullname"] + " " * 30)[:30])
+        line.add_text((item["stocktype"]["fullname"] + " " * 30)[:30])
         line.start_fg(Color.CYAN)
-        line.add_text("GBP" + item["price"])
+        line.add_text("GBP" + item["stocktype"]["price"])
         p.set_line(line_n, line)
         line_n += 1
 
