@@ -11,7 +11,7 @@ workshop_villages = {
     "Drop-In Workshops": 0,
     "Nottingham Hackspace": 1,
     "Milliways": 2,
-    "Furry High Commssion": 3,
+    "Furry High Commission": 3,
     "Field-FX": 4,
     "Maths Village": 5,
     "Hardware Hacking Area": 6,
@@ -55,7 +55,7 @@ for i in range(len(data) // perpage):
             line.start_fg(Color.DEFAULT)
             line.add_text(f"Workshop {n} ")
             line.start_fg(Color.YELLOW)
-            line.add_text(f"{780 + 3 * n - 2}")
+            line.add_text(f"{500 + 3 * n - 2}")
             sub_p.set_line(5, line)
             sub_p.add_wrapped_text(7, data[v]["description"])
         else:
@@ -124,8 +124,9 @@ for item in data:
         if c.venue not in upcoming:
             upcoming[c.venue] = []
         upcoming[c.venue].append(c)
-    if c.venue in daily and c.start.strftime("%a") in daily[c.venue]:
-        daily[c.venue][c.start.strftime("%a")].append(c)
+    venue = c.venue.split(" (")[0]
+    if venue in daily and c.start.strftime("%a") in daily[venue]:
+        daily[venue][c.start.strftime("%a")].append(c)
 
 page_n = 630
 for day in ["Fri", "Sat", "Sun"]:
@@ -177,7 +178,7 @@ p.write()
 
 # Pages for each stage
 index = []
-index.append(("Workshops", 780))
+index.append(("Workshops", 500))
 index.append(("Now & Next", 606))
 index.append(("Thursday films", 619))
 index.append(("Friday films", 620))

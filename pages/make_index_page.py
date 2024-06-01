@@ -68,6 +68,7 @@ index = [
     ("VILLAGES", 200),
     ("HOLIDAYS", 400),
     ("TRAINS", 408),
+    ("WORKSHOPS", 500),
     ("BLUE PETER", 525),
     ("LOTTERY", 555),
     ("EMF SCHEDULE", 600),
