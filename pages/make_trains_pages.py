@@ -1,6 +1,5 @@
 from pyfax import Page, Color, Line
 import pytrains
-import config
 
 
 class Station:
