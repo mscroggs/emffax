@@ -12,6 +12,7 @@ def xml_child(element, tag):
     assert len(children) == 1
     return children[0]
 
+
 p = Page(555)
 
 line = Line()
@@ -43,7 +44,7 @@ p.set_line(4, line)
 
 line = Line()
 line.start_double_size()
-line.add_text(f"Round 1:")
+line.add_text("Round 1:")
 for i, j in enumerate(round1_balls):
     line.start_fg([Color.CYAN, Color.YELLOW][i % 2])
     line.add_text(f"{j}")
@@ -63,7 +64,7 @@ p.set_line(10, line)
 
 line = Line()
 line.start_double_size()
-line.add_text(f"Round 2:")
+line.add_text("Round 2:")
 for i, j in enumerate(round2_balls):
     line.start_fg([Color.CYAN, Color.YELLOW][i % 2])
     line.add_text(f"{j}")

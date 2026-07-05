@@ -28,7 +28,10 @@ if pyfax.config.tti_dir is not None:
 
 os.system(f"cp {this_dir}/static/* {pyfax.config.build_dir}")
 
-pyfax.pages.make_test_page()
+
+def test_make_test_page():
+    pyfax.pages.make_test_page()
+
 
 @pytest.mark.parametrize("file", [
     file[:-3]

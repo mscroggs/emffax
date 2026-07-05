@@ -34,7 +34,7 @@ try:
         if file.endswith(".py") and not file.startswith("_"):
             print(f"Running {file}")
             importlib.import_module(f"pages.{file[:-3]}")
-except:
+except:  # noqa: E722
     pass
 
 if pyfax.config.output_dir is not None:
