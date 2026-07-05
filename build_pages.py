@@ -34,8 +34,8 @@ for file in os.listdir(f"{this_dir}/pages"):
         print(f"Running {file}")
         try:
             importlib.import_module(f"pages.{file[:-3]}")
-        except:  # noqa: E722
-            print("Caught error; continuing...")
+        except BaseException as e:  # noqa: E722
+            print(f"  Caught error ({e}); continuing...")
 
 if pyfax.config.output_dir is not None:
     os.system(f"cp {pyfax.config.build_dir}/* {pyfax.config.output_dir}")
