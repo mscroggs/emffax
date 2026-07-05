@@ -1,10 +1,10 @@
-# EMFFAX 2024
+# EMFFAX 2026
 
-EMFFAX is appearing in both bars at [EMF 2024](https://emfcamp.org). This repo contains the
+EMFFAX is appearing in both bars at [EMF 2026](https://emfcamp.org). This repo contains the
 code used to generate its pages.
 
 A snapshot of the tti files created by this repo can be found at
-https://github.com/mscroggs/emffax-2024-tti.
+https://github.com/mscroggs/emffax-2026-tti.
 
 ## Setting up EMFFAX
 
@@ -32,7 +32,7 @@ source <(wget -O - https://raw.githubusercontent.com/peterkvt80/vbit2/master/get
 
 Once vbit2 has installed, it will launch the vbit2 config tool. First,
 select `Install service` > `Custom` > `git repo` and enter
-`https://github.com/mscroggs/emffax-2024-tti`, enter the name `EMFFAX`,
+`https://github.com/mscroggs/emffax-2026-tti`, enter the name `EMFFAX`,
 then set this as the main service.
 
 Next, go into options, and set vbit2 to run at boot (option can be toggled
