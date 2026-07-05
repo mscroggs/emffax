@@ -1,7 +1,7 @@
 from pyfax import Page, Line, Color
 from pyfax.tools.url_helpers import load_json
 
-data = load_json("https://emffilms.org/schedule.json")
+data = load_json("https://films.emfcamp.org/schedule.json")
 
 films = {"Thursday": [], "Friday": [], "Saturday": [], "Sunday": []}
 
@@ -32,7 +32,7 @@ for i, (day, films) in enumerate(films.items()):
             line.start_fg(Color.RED)
         elif c == "18":
             line.start_fg(Color.CYAN)
-        elif c == "Unrated" or c == "Exempt":
+        elif c in ["Unrated", "Exempt", "E"]:
             line.start_fg(Color.DEFAULT)
         else:
             raise ValueError(f"Unknown certificate: {c}")
