@@ -29,13 +29,13 @@ os.system(f"cp {this_dir}/static/* {pyfax.config.build_dir}")
 
 pyfax.pages.make_test_page()
 
-try:
-    for file in os.listdir(f"{this_dir}/pages"):
-        if file.endswith(".py") and not file.startswith("_"):
-            print(f"Running {file}")
+for file in os.listdir(f"{this_dir}/pages"):
+    if file.endswith(".py") and not file.startswith("_"):
+        print(f"Running {file}")
+        try:
             importlib.import_module(f"pages.{file[:-3]}")
-except:  # noqa: E722
-    pass
+        except:  # noqa: E722
+            print("Caught error; continuing...")
 
 if pyfax.config.output_dir is not None:
     os.system(f"cp {pyfax.config.build_dir}/* {pyfax.config.output_dir}")
