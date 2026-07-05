@@ -45,7 +45,7 @@ p.set_line(4, line)
 line = Line()
 line.start_double_size()
 line.add_text("Round 1:")
-for i, j in enumerate(round1_balls):
+for i, j in enumerate(round1):
     line.start_fg([Color.CYAN, Color.YELLOW][i % 2])
     line.add_text(f"{j}")
 line.start_fg(Color.RED)
@@ -65,21 +65,21 @@ p.set_line(10, line)
 line = Line()
 line.start_double_size()
 line.add_text("Round 2:")
-for i, j in enumerate(round2_balls):
+for i, j in enumerate(round2):
     line.start_fg([Color.CYAN, Color.YELLOW][i % 2])
     line.add_text(f"{j}")
 line.start_fg(Color.RED)
 line.add_text(f"{round2_bonus}")
-p.set_line(6, line)
+p.set_line(12, line)
 
 line = Line()
 line.start_fg(Color.DEFAULT)
 line.add_text(f"Machine: {round2_machine}")
-p.set_line(9, line)
+p.set_line(15, line)
 
 line = Line()
 line.start_fg(Color.DEFAULT)
 line.add_text(f"Set of balls number {round2_balls}")
-p.set_line(10, line)
+p.set_line(16, line)
 
 p.write()
