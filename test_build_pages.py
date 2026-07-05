@@ -1,3 +1,4 @@
+import pytest
 import pyfax
 import os
 import importlib
@@ -29,13 +30,11 @@ os.system(f"cp {this_dir}/static/* {pyfax.config.build_dir}")
 
 pyfax.pages.make_test_page()
 
-try:
-    for file in os.listdir(f"{this_dir}/pages"):
-        if file.endswith(".py") and not file.startswith("_"):
-            print(f"Running {file}")
-            importlib.import_module(f"pages.{file[:-3]}")
-except:
-    pass
-
-if pyfax.config.output_dir is not None:
-    os.system(f"cp {pyfax.config.build_dir}/* {pyfax.config.output_dir}")
+@pytest.mark.parametrize("file", [
+    file[:-3]
+    for file in os.listdir(f"{this_dir}/pages")
+    if file.endswith(".py") and not file.startswith("_")
+])
+def test_build_pages(file):
+    print(f"Running {file}.py")
+    importlib.import_module(f"pages.{file}")

@@ -67,6 +67,7 @@ trains = [
 
 trains.sort(key=lambda s: s.name)
 for i, t in enumerate(trains):
+    print(i, t.name)
     t.page = 408 + i
     t.make_page()
 
