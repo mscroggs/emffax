@@ -57,40 +57,40 @@ n = p.add_wrapped_text(
     "EMFFAX's source code is available at "
     "https://github.com/mscroggs/emffax")
 
-p.add_block(n + 1, """
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-xx.......xxx.x..x.xxx.xx.......xx
-xx.xxxxx.x.x.xx...x.xx.x.xxxxx.xx
-xx.x...x.xxxxx..x.xx...x.x...x.xx
-xx.x...x.x...x.x..x..x.x.x...x.xx
-xx.x...x.xx.xxxxx.xxxx.x.x...x.xx
-xx.xxxxx.x..x..xxx..x.xx.xxxxx.xx
-xx.......x.x.x.x.x.x.x.x.......xx
-xxxxxxxxxxx...xx.x.xx..xxxxxxxxxx
-xx.....x....x.xxx....x..x.x.x.xxx
-xxx.x.x.x.xx.x....xx....x...x.xxx
-xx..x..x.xxx.xx...x.x.xxx.x..xxxx
-xxx....xxxxxxx..xx....x.....xx.xx
-xxx.xx.x.xx..x.x..x.xx.....xxxxxx
-xx.x.xxxx.xxxxxxxx.xxx..xxx.xxxxx
-xx.xxxx..x..x..xx.x.x.xxxxx....xx
-xx..xx..xx.xx.xx.x.x...x...xx..xx
-xxx.xx.x......xxx.x.xx.xx.xxxxxxx
-xx.x.xxxx.x..x...x.xx..xx...x..xx
-xx.xx.x..xx.xxx...x.x.xxxxx...xxx
-xx.xx.x.x..xxx..xx.x.......xx..xx
-xx.xx.xx..x..x.x....xx.......xxxx
-xxxxxxxxxx.xxxxxx..xx..xxx.xx.xxx
-xx.......x.x...xxxx.x..x.x.xx.xxx
-xx.xxxxx.xx.x.xx.x.xxx.xxx.x...xx
-xx.x...x.x....xxx....x.....x...xx
-xx.x...x.x.xxx.....xxx..x.xxxxxxx
-xx.x...x.x...xx...x...x...xx..xxx
-xx.xxxxx.x.xxx..xx...x..xxx..x.xx
-xx.......x...x.x....x....x...xxxx
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-""", Color.WHITE)
+p.add_block(n + 3, """
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
+xx.......xxx.x..x.xxx.xx.......xx.
+xx.xxxxx.x.x.xx...x.xx.x.xxxxx.xx.
+xx.x...x.xxxxx..x.xx...x.x...x.xx.
+xx.x...x.x...x.x..x..x.x.x...x.xx.
+xx.x...x.xx.xxxxx.xxxx.x.x...x.xx.
+xx.xxxxx.x..x..xxx..x.xx.xxxxx.xx.
+xx.......x.x.x.x.x.x.x.x.......xx.
+xxxxxxxxxxx...xx.x.xx..xxxxxxxxxx.
+xx.....x....x.xxx....x..x.x.x.xxx.
+xxx.x.x.x.xx.x....xx....x...x.xxx.
+xx..x..x.xxx.xx...x.x.xxx.x..xxxx.
+xxx....xxxxxxx..xx....x.....xx.xx.
+xxx.xx.x.xx..x.x..x.xx.....xxxxxx.
+xx.x.xxxx.xxxxxxxx.xxx..xxx.xxxxx.
+xx.xxxx..x..x..xx.x.x.xxxxx....xx.
+xx..xx..xx.xx.xx.x.x...x...xx..xx.
+xxx.xx.x......xxx.x.xx.xx.xxxxxxx.
+xx.x.xxxx.x..x...x.xx..xx...x..xx.
+xx.xx.x..xx.xxx...x.x.xxxxx...xxx.
+xx.xx.x.x..xxx..xx.x.......xx..xx.
+xx.xx.xx..x..x.x....xx.......xxxx.
+xxxxxxxxxx.xxxxxx..xx..xxx.xx.xxx.
+xx.......x.x...xxxx.x..x.x.xx.xxx.
+xx.xxxxx.xx.x.xx.x.xxx.xxx.x...xx.
+xx.x...x.x....xxx....x.....x...xx.
+xx.x...x.x.xxx.....xxx..x.xxxxxxx.
+xx.x...x.x...xx...x...x...xx..xxx.
+xx.xxxxx.x.xxx..xx...x..xxx..x.xx.
+xx.......x...x.x....x....x...xxxx.
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.
+""", Color.WHITE, indent=11)
 
 p.write()
