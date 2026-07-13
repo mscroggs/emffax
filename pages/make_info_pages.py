@@ -12,7 +12,7 @@ p.set_line(2, line)
 n = p.add_wrapped_text(
     4,
     "EMFFAX is a text-based information service inspired by "
-    "CEEFAX (see page 115). EMFFAX was created by "
+    "CEEFAX (see page 114). EMFFAX was created by "
     "Matthew Scroggs (@mscroggs).")
 n = p.add_wrapped_text(
     n + 1,
