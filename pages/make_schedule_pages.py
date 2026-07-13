@@ -1,6 +1,8 @@
 from pyfax import Page, Line, Color
 from pyfax.tools.url_helpers import load_json
 from datetime import datetime
+from unicodedata import normalize
+
 
 data = load_json("https://www.emfcamp.org/api/villages")
 
@@ -31,14 +33,16 @@ for i in range(len(data) // perpage):
         line = Line()
         line.start_fg(Color.DEFAULT)
         v = perpage * i + j
-        line.add_text((data[v]["name"] + " " * 20)[:20])
+        name = normalize("NFKD", data[v]["name"]).encode('ascii', 'ignore').decode('utf8')
+        desc = normalize("NFKD", data[v]["description"]).encode('ascii', 'ignore').decode('utf8')
+        line.add_text((name + " " + "." * 34)[:34])
         line.start_fg(Color.YELLOW)
         line.add_text(f"{page_n}")
-        p.set_line(3 + j, line)
+        p.set_line(4 + j, line)
         sub_p = Page(page_n)
         line = Line()
         line.start_double_size()
-        line.add_text(data[v]["name"])
+        line.add_text(name)
         sub_p.set_line(2, line)
 
         line = Line()
@@ -50,16 +54,16 @@ for i in range(len(data) // perpage):
 
         if data[v]["name"] in workshop_villages:
             n = workshop_villages[data[v]["name"]]
-            workshop_pages.append((n, data[v]["name"], page_n))
+            workshop_pages.append((n, name, page_n))
             line = Line()
             line.start_fg(Color.DEFAULT)
             line.add_text(f"Workshop {n} ")
             line.start_fg(Color.YELLOW)
             line.add_text(f"{500 + 3 * n - 2}")
             sub_p.set_line(5, line)
-            sub_p.add_wrapped_text(7, data[v]["description"])
+            sub_p.add_wrapped_text(7, desc)
         else:
-            sub_p.add_wrapped_text(6, data[v]["description"])
+            sub_p.add_wrapped_text(6, desc)
 
         sub_p.write()
 
