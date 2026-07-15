@@ -31,14 +31,14 @@ for i in range(len(data) // perpage):
         line = Line()
         line.start_fg(Color.DEFAULT)
         v = perpage * i + j
-        line.add_text((data[v]["name"] + " " * 20)[:20])
+        line.add_text((data[v]["name"] + " " * 20)[:35])
         line.start_fg(Color.YELLOW)
         line.add_text(f"{page_n}")
         p.set_line(3 + j, line)
         sub_p = Page(page_n)
         line = Line()
         line.start_double_size()
-        line.add_text(data[v]["name"])
+        line.add_text(data[v]["name"][:30])
         sub_p.set_line(2, line)
 
         line = Line()
@@ -71,12 +71,14 @@ for i in range(len(data) // perpage):
 
 
 class Content:
-    def __init__(self, data, page):
+    def __init__(self, data, page, occurrence_n):
         self.data = data
+        self.n = occurrence_n
+        self.occurrence_data = data["occurrences"][self.n]
         self.page = page
-        self.start = datetime.strptime(data["start_date"], "%Y-%m-%d %H:%M:%S")
-        self.end = datetime.strptime(data["end_date"], "%Y-%m-%d %H:%M:%S")
-        self.venue = data["venue"]
+        self.start = datetime.strptime(self.occurrence_data["start_date"], "%Y-%m-%d %H:%M:%S")
+        self.end = datetime.strptime(self.occurrence_data["end_date"], "%Y-%m-%d %H:%M:%S")
+        self.venue = self.occurrence_data["venue"]
 
     def make_page(self):
         assert self.page is not None
@@ -85,7 +87,7 @@ class Content:
 
         line = Line()
         line.start_fg(Color.YELLOW)
-        line.add_text(self.data["speaker"][:38])
+        line.add_text(self.data["names"][:38])
         p.set_line(line_n, line)
         line_n += 1
 
@@ -99,7 +101,7 @@ class Content:
 
         line = Line()
         line.start_fg(Color.YELLOW)
-        line.add_text(self.data["venue"][:22])
+        line.add_text(self.occurrence_data["venue"][:22])
         p.set_line(line_n, line)
         line_n += 1
 
@@ -119,14 +121,15 @@ daily = {stage: {"Fri": [], "Sat": [], "Sun": []}
 
 upcoming = {}
 for item in data:
-    c = Content(item, None)
-    if c.end > now:
-        if c.venue not in upcoming:
-            upcoming[c.venue] = []
-        upcoming[c.venue].append(c)
-    venue = c.venue.split(" (")[0]
-    if venue in daily and c.start.strftime("%a") in daily[venue]:
-        daily[venue][c.start.strftime("%a")].append(c)
+    for i, _ in enumerate(item["occurrences"]):
+        c = Content(item, None, i)
+        if c.end > now:
+            if c.venue not in upcoming:
+                upcoming[c.venue] = []
+            upcoming[c.venue].append(c)
+        venue = c.venue.split(" (")[0]
+        if venue in daily and c.start.strftime("%a") in daily[venue]:
+            daily[venue][c.start.strftime("%a")].append(c)
 
 page_n = 630
 for day in ["Fri", "Sat", "Sun"]:
@@ -236,8 +239,6 @@ for i, (page, n) in enumerate(index):
 p.write()
 
 # Workshops
-today_n = ["Fri", "Sat", "Sun"].index(now.strftime("%a"))
-
 index = []
 pn = 0
 for venue, v_name, v_page in workshop_pages:
