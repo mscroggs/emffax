@@ -8,8 +8,8 @@ on_tap = load_json("https://bar.emf.camp/api/on-tap.json")
 open = False
 now = datetime.now()
 for s in sessions["sessions"]:
-    start = datetime.strptime(s["opening_time"], "%Y-%m-%dT%H:%M:%S")
-    end = datetime.strptime(s["closing_time"], "%Y-%m-%dT%H:%M:%S")
+    start = datetime.strptime(s["opening_time"], "%Y-%m-%dT%H:%M:%S+01:00")
+    end = datetime.strptime(s["closing_time"], "%Y-%m-%dT%H:%M:%S+01:00")
     if start < now < end:
         open = True
         break
