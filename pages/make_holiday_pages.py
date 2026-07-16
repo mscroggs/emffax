@@ -176,9 +176,9 @@ xxx....x..
 line.start_fg(Color.YELLOW)
 line.add_text("ENGLAND")
 line.start_fg(Color.GREEN)
-line.add_text("King's Lynn")
+line.add_text("K's Lynn")
 line.start_fg(Color.CYAN)
-line.add_text(".....405")
+line.add_text("...405")
 line.start_bg(Color.BLACK)
 p.set_line(15, line)
 
