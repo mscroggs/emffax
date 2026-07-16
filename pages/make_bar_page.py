@@ -43,5 +43,7 @@ for i, data in on_tap.items():
         line.add_text("GBP" + item["stocktype"]["price"])
         p.set_line(line_n, line)
         line_n += 1
+        if line_n > 20:
+            break
 
 p.write()
