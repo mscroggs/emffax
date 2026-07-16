@@ -176,7 +176,7 @@ xxx....x..
 line.start_fg(Color.YELLOW)
 line.add_text("ENGLAND")
 line.start_fg(Color.GREEN)
-line.add_text("Boulby")
+line.add_text("King's Lynn")
 line.start_fg(Color.CYAN)
 line.add_text(".....405")
 line.start_bg(Color.BLACK)
@@ -290,9 +290,15 @@ things_to_see = {
         "Visit the Neighbours Set",
     ],
     "Geestmerambacht": ["WHY2025"],
-    "Boulby": [
-        "Boulby Underground Laboratory",
-        "Boulby Sound Mirror"
+    "King's Lynn": [
+        "King's Lynn Minster",
+        "Festival Too",
+        "Lynn Museum",
+        "The Walks",
+        "Greyfriars Tower",
+        "Norbury's Cafe",
+        "The Dice Box",
+        "Scroggs's House",
     ],
     "Lower Brailes": [
         "Brailes Church", "Mine Hill", "Brailes Hill", "Castle Hill",
