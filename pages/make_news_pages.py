@@ -1,61 +1,45 @@
+import re
 from pyfax import Page, Line, Color
 from pyfax.tools.url_helpers import load_rss
+
+
+def strip_tags(text):
+    return re.sub(r"\<[^\>]+\>", "", text)
+
 
 index = Page(101)
 line = Line()
 line.start_double_size()
-line.add_text("News index")
+line.add_text("Headlines")
 index.set_line(2, line)
 
-for i, (feed, title, tagline) in enumerate([
-    ("http://feeds.bbci.co.uk/news/rss.xml?edition=uk", "Top Stories", "From BBC News"),
-    ("http://feeds.bbci.co.uk/news/technology/rss.xml?edition=uk", "Technology", "From BBC News"),
-    ("http://feeds.bbci.co.uk/news/business/rss.xml?edition=uk", "Business", "From BBC News"),
-    ("http://www.ledburyreporter.co.uk/news/rss/", "Local News", "From Ledbury Reporter"),
-    ("http://feeds.bbci.co.uk/news/science_and_environment/rss.xml?edition=uk",
-     "Science", "From BBC News"),
-    ("http://feeds.bbci.co.uk/news/politics/rss.xml?edition=uk", "Politics", "From BBC News"),
-    ("http://feeds.bbci.co.uk/news/education/rss.xml?edition=uk", "Education", "From BBC News"),
-    ("https://www.theguardian.com/uk/rss", "The Guardian", None),
-    ("http://www.independent.co.uk/news/rss", "The Independent", None),
-    ("http://blog.emfcamp.org/rss", "emfcamp.org", None),
-    ("http://www.metoffice.gov.uk/public/data/PWSCache/WarningsRSS/Region/UK",
-     "Weather warnings", "From the Met Office"),
-]):
+emf = load_rss("http://blog.emfcamp.org/rss")["entries"]
+ledbury = load_rss("http://www.ledburyreporter.co.uk/news/rss/")["entries"]
 
-    line = Line()
-    line.start_fg(Color.DEFAULT)
-    line.add_text((title + " " * 30)[:30])
-    line.start_fg(Color.YELLOW)
-    line.add_text(f"{102 + i}")
-    index.set_line(4 + i, line)
+pages = []
+for i in range(10):
+    if i < len(emf):
+        pages.append(emf[i])
+    if i < len(ledbury):
+        pages.append(ledbury[i])
+
+for i, page in enumerate(pages):
+    if i < 15:
+        line = Line()
+        line.add_text((page["title"][:34] + " " * 34)[:34] + " ")
+        if i % 2 == 0:
+            line.start_fg(Color.YELLOW)
+        else:
+            line.start_fg(Color.BLUE)
+        line.add_text(str(101 + i))
+        index.set_line(4 + i, line)
 
     p = Page(102 + i)
-    if tagline is not None:
-        p.set_tagline(tagline)
     line = Line()
     line.start_double_size()
     line.start_fg(Color.YELLOW)
-    line.add_text(title)
-    p.set_line(2, line)
-
-    data = load_rss(feed)
-
-    line_n = 5
-    first = True
-    title = data["entries"]
-    for item in data["entries"]:
-        title = item["title"]
-        if first:
-            line_n = p.add_wrapped_text(line_n, title, double=True)
-            first = False
-        else:
-            line_n = p.add_wrapped_text(line_n, title)
-
-        line_n += 1
-        if line_n > 20:
-            break
-
+    line_n = p.add_wrapped_text(5, page["title"], double=True)
+    line_n = p.add_wrapped_text(line_n, strip_tags(page["content"][0]["value"]))
     p.write()
 
 index.write()

@@ -63,11 +63,10 @@ p.set_line(7, line)
 # List pages
 index = [
     ("NEWS", 101),
-    ("ABOUT EMFFAX", 113),
+    ("ABOUT EMFFAX", 122),
     ("ROBOT ARMS", 150),
     ("VILLAGES", 200),
     ("HOLIDAYS", 400),
-    ("TRAINS", 408),
     ("WORKSHOPS", 500),
     ("BLUE PETER", 525),
     ("LOTTERY", 555),

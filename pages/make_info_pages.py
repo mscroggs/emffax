@@ -1,6 +1,6 @@
 from pyfax import Page, Line, Color
 
-p = Page(113)
+p = Page(122)
 
 line = Line()
 line.start_double_size()
@@ -25,7 +25,7 @@ n = p.add_wrapped_text(
 
 p.write()
 
-p = Page(114)
+p = Page(123)
 
 line = Line()
 line.start_double_size()
@@ -49,7 +49,7 @@ n = p.add_wrapped_text(
 
 p.write()
 
-p = Page(115)
+p = Page(124)
 
 line = Line()
 n = p.add_wrapped_text(

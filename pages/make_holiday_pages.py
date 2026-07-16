@@ -283,8 +283,8 @@ things_to_see = {
     "Eastnor": [
         "Read EMFFAX", "Walk up to the Obelisk",
         "Maths Village", "The Robot Arms",
-        "Volunteering", "Null Sector",
-        "Hacky Racers", "Community Cultivation Compilation (CCC)",
+        "Berlin Wall", "Null Sector",
+        "Hacky Racers", "Tom the Shop",
     ],
     "Melbourne": [
         "Visit the Neighbours Set",
