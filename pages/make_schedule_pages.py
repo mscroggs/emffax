@@ -8,13 +8,12 @@ perpage = 17
 page_n = 200 + len(data) // perpage
 
 workshop_villages = {
-    "Drop-In Workshops": 0,
-    "Nottingham Hackspace": 1,
-    "Milliways": 2,
-    "Furry High Commission": 3,
-    "Field-FX": 4,
-    "Maths Village": 5,
-    "Hardware Hacking Area": 6,
+    "Furry High Commission": 1,
+    "Field-FX": 2,
+    "Hardware Hacking Area": 3,
+    "Maths Village": 4,
+    "Nationwide Village": 5,
+    "Bodgeham-on-Wye": 6,
 }
 workshop_pages = []
 
